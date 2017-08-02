@@ -1,0 +1,632 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="插件," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="nodejs 调试插件1234npm install supervisor -g//node server.js 每次更改server服务内容时 需要重启服务才行//supervisor server.js 每次更改server服务内容时 不要重启直接刷新就行 更新 package.json 的依赖12345npm install -g npm-check-updates    //ncu 检查版">
+<meta name="keywords" content="插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NPM 插件">
+<meta property="og:url" content="https://liaozhongxun.github.io/2016/12/16/NPM-插件/index.html">
+<meta property="og:site_name" content="Lzo勋">
+<meta property="og:description" content="nodejs 调试插件1234npm install supervisor -g//node server.js 每次更改server服务内容时 需要重启服务才行//supervisor server.js 每次更改server服务内容时 不要重启直接刷新就行 更新 package.json 的依赖12345npm install -g npm-check-updates    //ncu 检查版">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-02T01:58:49.821Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NPM 插件">
+<meta name="twitter:description" content="nodejs 调试插件1234npm install supervisor -g//node server.js 每次更改server服务内容时 需要重启服务才行//supervisor server.js 每次更改server服务内容时 不要重启直接刷新就行 更新 package.json 的依赖12345npm install -g npm-check-updates    //ncu 检查版">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> NPM 插件 | Lzo勋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7b698a59e9f2049758892d7fe83c12fd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lzo勋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">web前端</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-share">
+          <a href="/resource" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-share-square-o"></i> <br />
+            
+            分享
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-collect">
+          <a href="/studeWeb" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star-o"></i> <br />
+            
+            收藏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NPM 插件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-16T11:22:04+08:00" content="2016-12-16">
+              2016-12-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/16/NPM-插件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/NPM-插件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="nodejs-调试插件"><a href="#nodejs-调试插件" class="headerlink" title="nodejs 调试插件"></a>nodejs 调试插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install supervisor -g</div><div class="line"></div><div class="line">//node server.js 每次更改server服务内容时 需要重启服务才行</div><div class="line">//supervisor server.js 每次更改server服务内容时 不要重启直接刷新就行</div></pre></td></tr></table></figure>
+<h4 id="更新-package-json-的依赖"><a href="#更新-package-json-的依赖" class="headerlink" title="更新 package.json 的依赖"></a>更新 package.json 的依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g npm-check-updates  </div><div class="line">  </div><div class="line">//ncu 检查版本</div><div class="line">//ncu -u 更新需要更新的版本</div><div class="line">//ncu -a 更新所有版本</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="表格行列拖拽"><a href="#表格行列拖拽" class="headerlink" title="表格行列拖拽"></a>表格行列拖拽</h4><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install table-dragger --save</div></pre></td></tr></table></figure>
+<h4 id="删除插件-删除node-node-modules"><a href="#删除插件-删除node-node-modules" class="headerlink" title="删除插件(删除node_node_modules)"></a>删除插件(删除node_node_modules)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g rimraf </div><div class="line">cd xxx  </div><div class="line">rimraf node_modules</div></pre></td></tr></table></figure>
+<h4 id="MySQL模块-node项目下安装之后，该node项目就能连接MySQL了"><a href="#MySQL模块-node项目下安装之后，该node项目就能连接MySQL了" class="headerlink" title="MySQL模块(node项目下安装之后，该node项目就能连接MySQL了)"></a>MySQL模块(node项目下安装之后，该node项目就能连接MySQL了)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">npm install mysql  </div><div class="line">npm install mysql --save-dev</div><div class="line"></div><div class="line"><span class="comment">//js文件 模块</span></div><div class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">"mysql"</span>);</div><div class="line"></div><div class="line"><span class="comment">//1 连接</span></div><div class="line"><span class="comment">//var db = mysql.createPool(&#123;用法一&#125;) //连接池 保持连接性能好</span></div><div class="line"><span class="keyword">var</span> db = mysql.createConnection(&#123; </div><div class="line">         host: <span class="string">'localhost'</span>, <span class="comment">//主机名</span></div><div class="line">         user: <span class="string">'root'</span>, <span class="comment">//数据库用户名</span></div><div class="line">         password: <span class="string">'123456'</span>, <span class="comment">//用户对应得密码</span></div><div class="line">         database: <span class="string">'lzoxun'</span> <span class="comment">//要用的数据库名</span></div><div class="line">         <span class="comment">//prot:'3306' 端口号 默认3306</span></div><div class="line">     &#125;)</div><div class="line"></div><div class="line"><span class="comment">//2 查询  db.query(干什么,回调)</span></div><div class="line">              <span class="string">`SELECT * FROM usersheet`</span>  <span class="string">`<span class="subst">$&#123;bianliang&#125;</span>`</span></div><div class="line">     db.query(<span class="string">"SELECT * FROM `usersheet`;"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</div><div class="line">         <span class="keyword">if</span>(err)&#123;</div><div class="line">             <span class="built_in">console</span>.log(<span class="string">"出错了"</span>, err)</div><div class="line">         &#125;<span class="keyword">else</span>&#123;</div><div class="line">             <span class="built_in">console</span>.log(<span class="string">"成功了"</span>, data)</div><div class="line">         &#125;</div><div class="line">     &#125;)</div><div class="line"></div><div class="line"><span class="comment">//注:通过SQL =&gt; Structured Query Language  结构化查询语句 进行交互</span></div><div class="line"><span class="comment">//       SQL =&gt; 所有数据库操作的基础 </span></div><div class="line"><span class="comment">//       所欲数据库都是通过SQL与编程语言通信的</span></div><div class="line"><span class="comment">//       SQL == DBA</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/插件/" rel="tag">#插件</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/15/WEB前端真机调试/" rel="next" title="WEB前端真机调试">
+                <i class="fa fa-chevron-left"></i> WEB前端真机调试
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/18/ES6/" rel="prev" title="ES6">
+                ES6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/16/NPM-插件/"
+           data-title="NPM 插件" data-url="https://liaozhongxun.github.io/2016/12/16/NPM-插件/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/head2.jpg"
+               alt="Lzo勋" />
+          <p class="site-author-name" itemprop="name">Lzo勋</p>
+          <p class="site-description motion-element" itemprop="description">GitHub小博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#nodejs-调试插件"><span class="nav-number">1.</span> <span class="nav-text">nodejs 调试插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新-package-json-的依赖"><span class="nav-number">2.</span> <span class="nav-text">更新 package.json 的依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格行列拖拽"><span class="nav-number">3.</span> <span class="nav-text">表格行列拖拽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除插件-删除node-node-modules"><span class="nav-number">4.</span> <span class="nav-text">删除插件(删除node_node_modules)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL模块-node项目下安装之后，该node项目就能连接MySQL了"><span class="nav-number">5.</span> <span class="nav-text">MySQL模块(node项目下安装之后，该node项目就能连接MySQL了)</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lzo勋</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liaozhongxun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
