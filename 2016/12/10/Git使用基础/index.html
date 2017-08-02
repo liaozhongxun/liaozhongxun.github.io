@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Lzo勋">
 <meta property="og:description" content="==&amp;gt; git命令中一般 - 跟简称 – 跟全称 （ 如: -h/–help） ==&amp;gt; git init  //创建本地git仓库 ==&amp;gt; git config -h //帮助 ==&amp;gt; git config –list  //查看git所有配置 git 配置分为三部分      1、本地配置位于本地仓库的隐藏文件夹.git/config 文件  默认以core开头">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-02T01:58:49.816Z">
+<meta property="og:updated_time" content="2017-08-02T12:13:30.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git使用基础">
 <meta name="twitter:description" content="==&amp;gt; git命令中一般 - 跟简称 – 跟全称 （ 如: -h/–help） ==&amp;gt; git init  //创建本地git仓库 ==&amp;gt; git config -h //帮助 ==&amp;gt; git config –list  //查看git所有配置 git 配置分为三部分      1、本地配置位于本地仓库的隐藏文件夹.git/config 文件  默认以core开头">
@@ -355,6 +355,7 @@ git commit 回车(进入编辑器) --&gt; i(进入编辑模式) --&gt; esc (退�
 git branch  //查看分支 前面有 * 的就是当前指向的分支(head指向的分支)
 
 git branch -a //显示隐藏分支
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">如果你现快速的代上面的分支，你可以直接切换到那个分支：</div><div class="line"></div><div class="line">$ git checkout origin/experimental</div><div class="line"></div><div class="line">但是，如果你想在那个分支工作的话，你就需要创建一个本地分支：</div><div class="line"></div><div class="line">$ git checkout -b experimental origin/experimental</div><div class="line"></div><div class="line">现在，如果你看看你的本地分支，你会看到：</div><div class="line"></div><div class="line">$ git branch</div><div class="line">  master</div><div class="line">* experimental</div><div class="line"></div><div class="line">你还可以用git remote命令跟踪多个远程分支</div><div class="line"></div><div class="line">$ git remote add win32 git://gutup.com/users/joe/myproject-linux-port</div><div class="line">$ git branch -a</div><div class="line">* master</div><div class="line">  origin/HEAD</div><div class="line">  origin/master</div><div class="line">  origin/v1.0-stable</div><div class="line">  origin/experimental</div><div class="line">  linux/master</div><div class="line">  linux/new-widgets</div></pre></td></tr></table></figure>
 
 git branch -d 分支名 //删除分支
            -D 强制删除没有合并的分支
@@ -532,7 +533,7 @@ git status pop 取出贮藏内容
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -542,7 +543,7 @@ git status pop 取出贮藏内容
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
