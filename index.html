@@ -264,6 +264,247 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/10/潭州课程/" itemprop="url">
+                  潭州课程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-10T18:52:19+08:00" content="2017-08-10">
+              2017-08-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/08/10/潭州课程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/10/潭州课程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ECMAScript-6"><a href="#ECMAScript-6" class="headerlink" title="ECMAScript 6"></a>ECMAScript 6</h2><h3 id="扩展部分"><a href="#扩展部分" class="headerlink" title="扩展部分"></a>扩展部分</h3><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 1、let</span></div><div class="line"><span class="comment"> *      特性没有与解析(不会有先申明后执行的过程)   </span></div><div class="line"><span class="comment"> *      不能重复申明</span></div><div class="line"><span class="comment"> *      块级作用域( &#123;&#125;为一个代码块 )</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 2、const </span></div><div class="line"><span class="comment"> *      申明一个常量,不能被修改  但是对象中的值是可以改变的</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure>
+<h4 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"liao"</span>; <span class="comment">//代表ES6中所有有遍历接口的数组或类数组 </span></div><div class="line"><span class="keyword">var</span> arr = [...str] <span class="comment">// arr = ["l","i","a","o"]</span></div></pre></td></tr></table></figure>
+<h4 id="结构赋值"><a href="#结构赋值" class="headerlink" title="结构赋值"></a>结构赋值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 1、数组结构赋值</span></div><div class="line"><span class="comment"> *      let [a,b,[c]] = [1,2,[3,5]]</span></div><div class="line"><span class="comment"> *      //a ==1  b ==2 c==3</span></div><div class="line"><span class="comment"> *      </span></div><div class="line"><span class="comment"> *      let [a,b,c] = [1,2,[3,5]]</span></div><div class="line"><span class="comment"> *      //a ==1  b ==2 c==[3,5]</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 2、对象的节后赋值</span></div><div class="line"><span class="comment"> *      let obj = &#123;arr:[],str:''&#125;;</span></div><div class="line"><span class="comment"> *      let &#123;arr,str&#125; = obj;</span></div><div class="line"><span class="comment"> *      //arr==[]  srt=='',对象的结构赋值键名要对的上</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 1、字符串拼接</span></div><div class="line"><span class="comment"> *     `字符串夹$&#123;bian量&#125;`</span></div><div class="line"><span class="comment"> *     $&#123;&#125; 中可以直接运算</span></div><div class="line"><span class="comment"> *         可直接换行</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 2、字符串查找</span></div><div class="line"><span class="comment"> *      str.includes("char") 如果找到返回true</span></div><div class="line"><span class="comment"> *      str.startsWith("char") 如果知道字符在头部返回true</span></div><div class="line"><span class="comment"> *      str.endsWith("char") 如果知道字符在尾部返回true</span></div><div class="line"><span class="comment"> *      第二个参数从第几位开始找</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *      str.repeat(n) 复制字符串n遍</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure>
+<h4 id="正则扩展"><a href="#正则扩展" class="headerlink" title="正则扩展"></a>正则扩展</h4><h4 id="数值扩展"><a href="#数值扩展" class="headerlink" title="数值扩展"></a>数值扩展</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 1、去除小数点(取整)</span></div><div class="line"><span class="comment"> *    Math.trunc(num)</span></div><div class="line"><span class="comment"> *    </span></div><div class="line"><span class="comment"> * 2、区分正负</span></div><div class="line"><span class="comment"> *    Math.sing(5) 1</span></div><div class="line"><span class="comment"> *    Math.sing(0) 0 </span></div><div class="line"><span class="comment"> *    Math.sing(-5) -1</span></div><div class="line"><span class="comment"> *    Math.sing(-0) -0</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 3、平方和的平方根</span></div><div class="line"><span class="comment"> *    Math.hypot(2,3)</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure>
+<h4 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 1、类数组转数组(如字符串)</span></div><div class="line"><span class="comment"> *    Array.from(leiarr)</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 2、接收一组参数，转为数组</span></div><div class="line"><span class="comment"> *    Array.of(1,2,3,4)</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 3、找到数组中符合条件的一个值</span></div><div class="line"><span class="comment"> *    arr.find(function(value,key)&#123;</span></div><div class="line"><span class="comment"> *        return value &gt;3</span></div><div class="line"><span class="comment"> *    &#125;)</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 4、找到数组中符合条件的一个值的索引</span></div><div class="line"><span class="comment"> *    arr.findIndex(function(value,key)&#123;</span></div><div class="line"><span class="comment"> *        return value &gt;3</span></div><div class="line"><span class="comment"> *    &#125;)</span></div><div class="line"><span class="comment"> * 5、数组填充</span></div><div class="line"><span class="comment"> *    arr.fill('ele',startIndex,endIndex) 包前不包后</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure>
+<h4 id="循环扩展"><a href="#循环扩展" class="headerlink" title="循环扩展"></a>循环扩展</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> *  1、for of 循环</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> value <span class="keyword">of</span> obj)&#123;&#125; <span class="comment">//只能遍历有遍历接口的对象  //Object.values(obj)</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">of</span> arr.keys())&#123;&#125; <span class="comment">//遍历数组的key</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> value <span class="keyword">of</span> arr.values())&#123;&#125; <span class="comment">//遍历数组的value (默认)</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> [key,value] <span class="keyword">of</span> arr.entries())&#123;&#125; <span class="comment">//遍历数组的key end value</span></div></pre></td></tr></table></figure>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><h5 id="Proxy-代理对象"><a href="#Proxy-代理对象" class="headerlink" title="Proxy 代理对象"></a>Proxy 代理对象</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pro = <span class="keyword">new</span> <span class="built_in">Proxy</span>(obj,&#123; <span class="comment">//obj就是要代理的对象,参数二就是对代理对象的处理</span></div><div class="line">    set(obj,attr,value)&#123; <span class="comment">//对代理对象的设置就会先触发set方法</span></div><div class="line">        obj[attr] = value;</div><div class="line">    &#125;,</div><div class="line">    get(obj,attr)&#123; <span class="comment">//对代理对象的访问就会先触发get方法</span></div><div class="line">        <span class="keyword">return</span> 出去的值,就是你访问obj对象的attr属性所得到的值</div><div class="line">    &#125;    </div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(pro.a)  <span class="comment">//得到return出来的值</span></div></pre></td></tr></table></figure>
+<h5 id="对象定义"><a href="#对象定义" class="headerlink" title="对象定义"></a>对象定义</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * var obj = &#123;</span></div><div class="line"><span class="comment"> *     fn()&#123;&#125;,</span></div><div class="line"><span class="comment"> *      ["a" + 'b']:"123"</span></div><div class="line"><span class="comment"> * &#125;</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 简写</span></div><div class="line"><span class="comment"> *   ES5 : return &#123;x:x,y:y&#125;</span></div><div class="line"><span class="comment"> *   ES6 : return &#123;x,y&#125; </span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure>
+<h5 id="对象新增方法"><a href="#对象新增方法" class="headerlink" title="对象新增方法"></a>对象新增方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 1、判断参数是否相等</span></div><div class="line"><span class="comment"> *    Object.is(0,-0) false  </span></div><div class="line"><span class="comment"> *    0 === -0 true  </span></div><div class="line"><span class="comment"> *    Object.is(NAN,NAN) true  </span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure>
+<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><h3 id="nodejs是什么"><a href="#nodejs是什么" class="headerlink" title="nodejs是什么"></a>nodejs是什么</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 </div><div class="line">Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型(异步运行)，使其轻量又高效。 </div><div class="line">Node.js 的包管理器 npm，是全球最大的开源库生态系统。</div></pre></td></tr></table></figure>
+<h3 id="nodejs-与-javascript"><a href="#nodejs-与-javascript" class="headerlink" title="nodejs 与 javascript"></a>nodejs 与 javascript</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">nodejs</th>
+<th style="text-align:center">javascript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">全局</td>
+<td style="text-align:center">global</td>
+<td style="text-align:center">window</td>
+</tr>
+</tbody>
+</table>
+<p>nodejs不包含浏览器的相关操作</p>
+<h3 id="nodejs-常用的全局对象"><a href="#nodejs-常用的全局对象" class="headerlink" title="nodejs 常用的全局对象"></a>nodejs 常用的全局对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//当前文件路径</span></div><div class="line"><span class="built_in">console</span>.log(__filename);</div><div class="line"></div><div class="line"><span class="comment">//当前文件文件夹</span></div><div class="line"><span class="built_in">console</span>.log(__dirname);</div><div class="line"></div><div class="line"><span class="comment">//process对象 获取node工作目录(根目录)</span></div><div class="line"><span class="built_in">console</span>.log(process.cwd());</div></pre></td></tr></table></figure>
+<h3 id="模块-一个文件就是一个模块"><a href="#模块-一个文件就是一个模块" class="headerlink" title="模块(一个文件就是一个模块)"></a>模块(一个文件就是一个模块)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//引入</span></div><div class="line">   <span class="built_in">require</span>(<span class="string">'./1.js'</span>); <span class="comment">//后缀可以省略 ./代表当前目录</span></div><div class="line">   <span class="built_in">require</span>(<span class="string">'http'</span>); <span class="comment">//安装好node就带有的模块 叫核心模块,直接写模块名</span></div><div class="line">                    <span class="comment">//node_modules下的模块也是直接写名字</span></div><div class="line">             </div><div class="line"><span class="comment">//模块的加载顺序: 文件夹名 &gt; 文件名.js &gt; 文件名.json &gt; 文件名.node</span></div><div class="line"><span class="comment">//模块直接互相使用:</span></div><div class="line">  <span class="built_in">module</span>.exports = a; <span class="comment">//将对象a暴露出模块,给其他require的文件使用</span></div></pre></td></tr></table></figure>
+<h3 id="node底层服务器"><a href="#node底层服务器" class="headerlink" title="node底层服务器"></a>node底层服务器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//引入http模块</span></div><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>( <span class="string">'http'</span>);</div><div class="line"></div><div class="line">http.createServer(<span class="function">(<span class="params">request,response</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">//request 请求对象 浏览器请求服务器发送的内容</span></div><div class="line">    <span class="comment">//response 相应对象 服务器返回给浏览器的内容</span></div><div class="line">    response.writeHead(<span class="number">200</span>,&#123; <span class="string">'Content-Type'</span>:<span class="string">'text/html'</span>&#125;);</div><div class="line">    response.end(<span class="string">'Hello word'</span>); <span class="comment">//结束相应</span></div><div class="line">&#125;).listen(<span class="number">8088</span>);</div><div class="line"><span class="comment">// 运行该模块 访问 localhost:8088   就能显示响应的内容了</span></div><div class="line"><span class="comment">// 后面如果有修改代码，要重启服务器代码才会生效</span></div></pre></td></tr></table></figure>
+<h3 id="node工程配置目录"><a href="#node工程配置目录" class="headerlink" title="node工程配置目录"></a>node工程配置目录</h3><p>1、配置文件: package.json<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    'name':'项目名称',</div><div class="line">    'version':'1.0.0', </div><div class="line">    'dependencies':&#123;       //依赖包</div><div class="line">        'express':'latest' //版本号，latest代表最新版本</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、router目录 存放路由文件<br>3、views目录 存放模板文件<br>4、module目录 存放自己写的模块</p>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><h4 id="ejs"><a href="#ejs" class="headerlink" title="ejs"></a>ejs</h4><p>1、设置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">express = <span class="built_in">require</span>(<span class="string">'express'</span>),</div><div class="line">app = express();<span class="comment">//初始化express express是封装过的服务器</span></div><div class="line"><span class="comment">//设置模板引擎目录</span></div><div class="line">app.set(<span class="string">'views'</span>,__dirname + <span class="string">'/views'</span>);</div><div class="line"><span class="comment">//设置使用的模板引擎是什么</span></div><div class="line">app.set(<span class="string">'view engine'</span>,<span class="string">'ejs'</span>);</div></pre></td></tr></table></figure></p>
+<p>2、调用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//响应模板引擎</span></div><div class="line">router.get(<span class="string">'/ejs'</span>,(req,res) =&gt; &#123;</div><div class="line">    <span class="comment">//因为设置了模板引擎目录，所以这边直接写文件名</span></div><div class="line">    <span class="comment">//因为设置了模板引擎目录格式，所以这边能省略扩展名</span></div><div class="line">    <span class="comment">//json传递数据</span></div><div class="line">    <span class="comment">//如果值是字符串  ejs文件中接收 &lt;%= name %&gt;</span></div><div class="line">    <span class="comment">//如果值是html标签并需要解析  ejs文件中接收 &lt;%- name %&gt;</span></div><div class="line">    res.render(<span class="string">'index'</span>,&#123;<span class="string">"name"</span>:<span class="string">"lzoxun"</span>&#125;); <span class="comment">//value也可以是json</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>3、ejs语法<br><strong>&lt;% %&gt; 形式写js代码</strong><br><strong>&lt;%=或- %&gt; 接收传递的值</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//引入其他模板</span></div><div class="line">&lt;% include header.ejs %&gt;</div><div class="line"></div><div class="line"><span class="comment">//接收模板传递的数据</span></div><div class="line">&lt;%= name %&gt;</div><div class="line">&lt;%- name %&gt;</div><div class="line"></div><div class="line"><span class="comment">//编写js代码</span></div><div class="line">&lt;% <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123; %&gt;</div><div class="line">      循环中</div><div class="line"> &lt;% &#125; %&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h3><p>1、设置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//设置静态资源目录 js img css</span></div><div class="line"><span class="comment">//app.use('/dir',express.static(__dirname + '/public')) //这个目录下的dir 就是静态资源引用时的根目录</span></div><div class="line">app.use(express.static(__dirname + <span class="string">'/public'</span>)) <span class="comment">//这个目录就是静态资源引用时的根目录</span></div></pre></td></tr></table></figure></p>
+<h3 id="mySql数据库"><a href="#mySql数据库" class="headerlink" title="mySql数据库"></a>mySql数据库</h3><h4 id="本地换xampp"><a href="#本地换xampp" class="headerlink" title="本地换xampp"></a>本地换xampp</h4>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/10/其他运用/" itemprop="url">
+                  其他运用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-10T15:21:43+08:00" content="2017-08-10">
+              2017-08-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/08/10/其他运用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/10/其他运用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="谷歌插件"><a href="#谷歌插件" class="headerlink" title="谷歌插件"></a>谷歌插件</h3><h4 id="油猴脚本管理器-Tampermonkey-浏览器插件"><a href="#油猴脚本管理器-Tampermonkey-浏览器插件" class="headerlink" title="油猴脚本管理器 Tampermonkey 浏览器插件"></a>油猴脚本管理器 Tampermonkey 浏览器插件</h4><p><a href="https://greasyfork.org/zh-CN" target="_blank" rel="external">脚本下载网</a></p>
+<h5 id="百度直接下载脚本"><a href="#百度直接下载脚本" class="headerlink" title="百度直接下载脚本"></a>百度直接下载脚本</h5><p><a href="http://dwz.cn/dupanzhushou" target="_blank" rel="external">百度直接下载脚本地址</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">安装插件 Tampermonkey</div><div class="line">安装脚本</div><div class="line">安装完成之后打开分享的链接,才会出现已运行的脚本</div></pre></td></tr></table></figure></p>
+<h5 id="网页限制解除"><a href="#网页限制解除" class="headerlink" title="网页限制解除"></a>网页限制解除</h5><p>通杀大部分网站，可以解除禁止复制、剪切、选择文本、右键菜单的限制。</p>
+<h3 id="专用链自动转换"><a href="#专用链自动转换" class="headerlink" title="专用链自动转换"></a>专用链自动转换</h3><p>浏览器邮件选择打开链接法式,入如打开了迅雷就能选择迅雷下载</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/10/大总结/" itemprop="url">
                   大总结
                 </a>
@@ -315,18 +556,16 @@
       
         
           
-            <h3 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h3><blockquote>
-<p><strong>事件绑定</strong></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//js中addachEvent,addEventListener的使用方法</span></div><div class="line"><span class="comment">//非IE浏览器的动态添加,注销事件的方法</span></div><div class="line">el.addEventListener(<span class="string">'click'</span>, msg, <span class="literal">false</span>);<span class="comment">//添加</span></div><div class="line">el.removeEventListener(<span class="string">'click'</span>, msg, <span class="literal">false</span>);<span class="comment">//注销</span></div><div class="line"><span class="comment">//IE中动态添加事件的方法</span></div><div class="line">el.attachEvent(<span class="string">'onclick'</span>,msg);<span class="comment">//添加</span></div><div class="line">el.detachEvent(<span class="string">'onclick'</span>,msg);<span class="comment">//注销</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">obj,sEv,fn</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(obj.addachEvent)&#123;</div><div class="line">        obj.addachEvent(<span class="string">'on'</span>+sEv,fn);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        obj.addEventListener(sEv,fn,<span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>jQuery 原型</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">jQuery</span>(<span class="params">arg</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.event = [];</div><div class="line">    <span class="keyword">switch</span>(<span class="keyword">typeof</span> arg)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'function'</span>:</div><div class="line">              addEvent(<span class="built_in">window</span>,load,arg);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">'string'</span>:</div><div class="line">              <span class="keyword">switch</span>(arg.charAt(<span class="number">0</span>))&#123;</div><div class="line">                  <span class="keyword">case</span> <span class="string">'#'</span>:</div><div class="line">                        <span class="keyword">this</span>.event = <span class="built_in">document</span>.getElementById(arg.substring(<span class="number">1</span>));</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                  <span class="keyword">case</span> <span class="string">'.'</span>:<span class="keyword">break</span>;</div><div class="line">                  <span class="keyword">default</span>:<span class="keyword">break</span>;</div><div class="line">              &#125;;</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">'object'</span>:</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">jQuery.prototype = &#123;</div><div class="line">	click:<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">	    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.event.length;i++)&#123;</div><div class="line">            addEvent(<span class="keyword">this</span>.event[i],<span class="string">'click'</span>,fn)</div><div class="line">	    &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">$</span>(<span class="params">arg</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> jQuery(arg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">obj,sEv,fn</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(obj.addachEvent)&#123;</div><div class="line">        obj.addachEvent(<span class="string">'on'</span>+sEv,fn);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        obj.addEventListener(sEv,fn,<span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>内存</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">内存 =&gt; 常量池、栈(存放变量,变量存储`地址`)、堆(存放对象 object)</div></pre></td></tr></table></figure>
+            <h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h4 id="溢出隐藏"><a href="#溢出隐藏" class="headerlink" title="溢出隐藏"></a>溢出隐藏</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div</span>&#123;	</div><div class="line">    <span class="comment">/*多行溢出省略号显示 不支持火狐*/</span></div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">    <span class="attribute">display</span>: -webkit-box;</div><div class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">1</span>;</div><div class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</div><div class="line">    </div><div class="line">    <span class="comment">/*单行*/</span></div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">    <span class="attribute">white-space</span>:nowrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*子级别最后加一个 clear:both;*/</span></div><div class="line"></div><div class="line">.clearfix&#123;//给浮动元素的父级加</div><div class="line">  &amp;<span class="selector-pseudo">:before</span>,</div><div class="line">  &amp;<span class="selector-pseudo">:after</span> &#123;</div><div class="line">    <span class="attribute">display</span>:block;</div><div class="line">    <span class="attribute">clear</span>:both;</div><div class="line">    <span class="attribute">content</span>:<span class="string">""</span>;</div><div class="line">    <span class="attribute">visibility</span>:hidden;</div><div class="line">    <span class="attribute">height</span>:<span class="number">0</span></div><div class="line">  &#125;</div><div class="line">  &amp;<span class="selector-pseudo">:after</span> &#123;</div><div class="line">    <span class="attribute">clear</span>: both;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.clear</span>&#123;</div><div class="line">    <span class="attribute">zoom</span>:<span class="number">1</span>;</div><div class="line">    &amp;:after&#123;</div><div class="line">      <span class="selector-tag">display</span><span class="selector-pseudo">:block</span>;</div><div class="line">      <span class="selector-tag">clear</span><span class="selector-pseudo">:both</span>;</div><div class="line">      <span class="selector-tag">content</span><span class="selector-pseudo">:""</span>;</div><div class="line">      <span class="selector-tag">visibility</span><span class="selector-pseudo">:hidden</span>;</div><div class="line">      <span class="selector-tag">height</span><span class="selector-pseudo">:0</span></div><div class="line">    &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name="renderer" content="webkit" /&gt; /*使360浏览器默认使用webkit模式*/</div></pre></td></tr></table></figure>
+<h3 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h3><h4 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//js中addachEvent,addEventListener的使用方法</span></div><div class="line"><span class="comment">//非IE浏览器的动态添加,注销事件的方法</span></div><div class="line">el.addEventListener(<span class="string">'click'</span>, msg, <span class="literal">false</span>);<span class="comment">//添加</span></div><div class="line">el.removeEventListener(<span class="string">'click'</span>, msg, <span class="literal">false</span>);<span class="comment">//注销</span></div><div class="line"><span class="comment">//IE中动态添加事件的方法</span></div><div class="line">el.attachEvent(<span class="string">'onclick'</span>,msg);<span class="comment">//添加</span></div><div class="line">el.detachEvent(<span class="string">'onclick'</span>,msg);<span class="comment">//注销</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">obj,sEv,fn</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(obj.addachEvent)&#123;</div><div class="line">        obj.addachEvent(<span class="string">'on'</span>+sEv,fn);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        obj.addEventListener(sEv,fn,<span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="jQuery-原型"><a href="#jQuery-原型" class="headerlink" title="jQuery 原型"></a>jQuery 原型</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">jQuery</span>(<span class="params">arg</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.event = [];</div><div class="line">    <span class="keyword">switch</span>(<span class="keyword">typeof</span> arg)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'function'</span>:</div><div class="line">              addEvent(<span class="built_in">window</span>,load,arg);<span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">'string'</span>:</div><div class="line">              <span class="keyword">switch</span>(arg.charAt(<span class="number">0</span>))&#123;</div><div class="line">                  <span class="keyword">case</span> <span class="string">'#'</span>:</div><div class="line">                        <span class="keyword">this</span>.event = <span class="built_in">document</span>.getElementById(arg.substring(<span class="number">1</span>));</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                  <span class="keyword">case</span> <span class="string">'.'</span>:<span class="keyword">break</span>;</div><div class="line">                  <span class="keyword">default</span>:<span class="keyword">break</span>;</div><div class="line">              &#125;;</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">'object'</span>:</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">jQuery.prototype = &#123;</div><div class="line">	click:<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">	    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.event.length;i++)&#123;</div><div class="line">            addEvent(<span class="keyword">this</span>.event[i],<span class="string">'click'</span>,fn)</div><div class="line">	    &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">$</span>(<span class="params">arg</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> jQuery(arg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">obj,sEv,fn</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(obj.addachEvent)&#123;</div><div class="line">        obj.addachEvent(<span class="string">'on'</span>+sEv,fn);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        obj.addEventListener(sEv,fn,<span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">内存 =&gt; 常量池、栈(存放变量,变量存储`地址`)、堆(存放对象 object)</div></pre></td></tr></table></figure>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><h4 id="空间、域名、ftp"><a href="#空间、域名、ftp" class="headerlink" title="空间、域名、ftp"></a>空间、域名、ftp</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">  1、 购买好空间，到空间管理那去绑定你的域名(注意绑定两个有www的和没有www的，重定向)</div><div class="line"></div><div class="line">  2、到域名管理去域名解析(如果空间的解析别名是ip形式，则域名解析时选A。如果是网址形式，就选CNAME)</div><div class="line"></div><div class="line">  3、域名解析时把解析别名填到纪录值那就行了</div><div class="line"></div><div class="line">  4、一般空间都支持ftp功能(这是购买空间时要注意事项之一)，在你的空间管理下面会提供ftp链接的用户名密码，以及ftp上传地址</div><div class="line"></div><div class="line">FTP链接:</div><div class="line"></div><div class="line">  1、链接</div><div class="line"></div><div class="line">     建一个站点，一般以域名为站点名</div><div class="line"></div><div class="line">     下面的地址就是上传地址，端口号一般默认，用户名密码是空间下提供的那个 </div><div class="line"></div><div class="line">     链接好就行了</div><div class="line"></div><div class="line">  2、上传文件</div><div class="line"></div><div class="line">     上传压缩文件，要的空间的文件管理里面解压，ftp不能直接解压的(有些空间只能解压特点格式的压缩文件)</div></pre></td></tr></table></figure>
+<h4 id="github项目"><a href="#github项目" class="headerlink" title="github项目"></a>github项目</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sls-admin</div><div class="line">vue-element-admin</div></pre></td></tr></table></figure>
+<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><h4 id="谷歌浏览器处理跨域"><a href="#谷歌浏览器处理跨域" class="headerlink" title="谷歌浏览器处理跨域"></a>谷歌浏览器处理跨域</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--disable-web-security --user-data-dir</div></pre></td></tr></table></figure>
+<p>#### </p>
 
           
         
@@ -974,8 +1213,11 @@
       
         
           
-            <h3 id="mySQL-简单使用"><a href="#mySQL-简单使用" class="headerlink" title="mySQL 简单使用"></a>mySQL 简单使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/bin ==&gt; mysql.exe -uroot(u+账户名) -p  登入数据库</div><div class="line">//show databases;  展示数据库</div><div class="line">//create database 库名; 新建数据库</div><div class="line">//exit; 退出</div></pre></td></tr></table></figure>
-<h3 id="SQL-基础语法"><a href="#SQL-基础语法" class="headerlink" title="SQL 基础语法"></a>SQL 基础语法</h3><h4 id="四大语句-—-曾删改查"><a href="#四大语句-—-曾删改查" class="headerlink" title="四大语句  —-  曾删改查"></a>四大语句  —-  曾删改查</h4><h5 id="曾-INSERT"><a href="#曾-INSERT" class="headerlink" title="曾 INSERT"></a>曾 INSERT</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表 (字段列表) <span class="keyword">VALUES</span> (值列表)</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> usersheet (<span class="keyword">ID</span> , username , <span class="keyword">password</span>) <span class="keyword">VALUES</span> (<span class="number">0</span>,<span class="string">'lia'</span>,<span class="string">'123456'</span>);</div><div class="line">#ID设置了自增用0占位</div></pre></td></tr></table></figure>
+            <h3 id="mySQL-简介"><a href="#mySQL-简介" class="headerlink" title="mySQL 简介"></a>mySQL 简介</h3><p>1、mysql分客户的和服务端<br>2、安装mysql，默认root 过程中可设置密码 <a href="http://pan.baidu.com/s/1nv81CQd" target="_blank" rel="external">直接下载 v5.7.3</a> 密码：6ctv<br>3、安装数据库管理工具Navicat for MySQL <a href="http://pan.baidu.com/s/1eRTyuHW" target="_blank" rel="external">直接下载</a> 密码：k9xt<br>4、管理工具链接mySql账户 (随机链接名,主机地址,端口号,数据库的用户名与密码)<br>5、单位: 库 =&gt; 表 =&gt; 行:每条数据、列:字段或域<br>6、项目中通过安装mysql依赖包链接数据库</p>
+<h3 id="数据库的表"><a href="#数据库的表" class="headerlink" title="数据库的表"></a>数据库的表</h3><p>1、字段的属性:字段名、类型、长度、是否小数点、是否为空、是否为主键等;<br>2、主键的有点:一条数据的唯一标示、性能高、优先级高</p>
+<h3 id="mySQL-简单使用"><a href="#mySQL-简单使用" class="headerlink" title="mySQL 简单使用"></a>mySQL 简单使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/bin ==&gt; mysql.exe -uroot(u+账户名) -p  登入数据库</div><div class="line">//show databases;  展示数据库</div><div class="line">//create database 库名; 新建数据库</div><div class="line">//exit; 退出</div></pre></td></tr></table></figure>
+<h3 id="SQL-基础语法"><a href="#SQL-基础语法" class="headerlink" title="SQL 基础语法"></a>SQL 基础语法</h3><h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE `node`.`user`(</div><div class="line"> `id` INT(11)  NOT NULL AUTO_INCREMENT,</div><div class="line"> `username` varchar(64)	 NOT NULL ,</div><div class="line">  `pass` varchar(64) NOT NULL ,</div><div class="line">  PRIMARY KEY (`id`) //主键为id</div><div class="line">  )</div><div class="line">ENGINE = InnoDB CHARSET=utf8; 设置编码</div></pre></td></tr></table></figure>
+<h4 id="四大语句-—-曾删改查"><a href="#四大语句-—-曾删改查" class="headerlink" title="四大语句  —-  曾删改查"></a>四大语句  —-  曾删改查</h4><h5 id="曾-INSERT"><a href="#曾-INSERT" class="headerlink" title="曾 INSERT"></a>曾 INSERT</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表 (字段列表) <span class="keyword">VALUES</span> (值列表)</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> usersheet (<span class="keyword">ID</span> , username , <span class="keyword">password</span>) <span class="keyword">VALUES</span> (<span class="number">0</span>,<span class="string">'lia'</span>,<span class="string">'123456'</span>);</div><div class="line">#ID设置了自增用0占位</div></pre></td></tr></table></figure>
 <h5 id="删-DELETE"><a href="#删-DELETE" class="headerlink" title="删 DELETE"></a>删 DELETE</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表 <span class="keyword">WHERE</span> 条件</div></pre></td></tr></table></figure>
 <h5 id="改-UPDATE"><a href="#改-UPDATE" class="headerlink" title="改 UPDATE"></a>改 UPDATE</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> 表 <span class="keyword">SET</span> 字段=<span class="keyword">VALUE</span>,字段=<span class="keyword">VALUE</span> <span class="keyword">WHERE</span> 筛选条件</div><div class="line">#不加筛选条件所有这个字段都会更改</div></pre></td></tr></table></figure>
 <h5 id="查-SELECT"><a href="#查-SELECT" class="headerlink" title="查 SELECT"></a>查 SELECT</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> 什么(通配符) <span class="keyword">FROM</span> 表</div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> usersheet;</div></pre></td></tr></table></figure>
@@ -984,6 +1226,7 @@
 <h5 id="GROUP-聚类-合并相同数据"><a href="#GROUP-聚类-合并相同数据" class="headerlink" title="GROUP 聚类(合并相同数据)"></a>GROUP 聚类(合并相同数据)</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GROUP BY 字段  #以指定字段作为依据来分组 去重</div><div class="line"><span class="keyword">SELECT</span> 字段,<span class="keyword">COUNT</span>(字段) <span class="keyword">FROM</span> 表 <span class="keyword">GROUP</span> <span class="keyword">BY</span> 字段 #得到每个不同字段出现几次</div><div class="line"></div><div class="line">统计的函数都可以用于 <span class="keyword">GROUP</span> 的记录</div></pre></td></tr></table></figure>
 <h5 id="LIMIT-限制"><a href="#LIMIT-限制" class="headerlink" title="LIMIT 限制"></a>LIMIT 限制</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LIMIT 10;  #只要前十条</div><div class="line">LIMIT 2,3; #从第二条开始，取三条</div></pre></td></tr></table></figure>
 <p>SQL语句标准写法<br>    关键字大写、(库、表、字段)需要用``引起来  不遵循也可以</p>
+<h3 id="连接mysql"><a href="#连接mysql" class="headerlink" title="连接mysql"></a>连接mysql</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">//js文件 模块</div><div class="line">const mysql = require(&quot;mysql&quot;);</div><div class="line"></div><div class="line">//1 连接</div><div class="line">//var db = mysql.createPool(&#123;用法一&#125;) //连接池 保持连接性能好</div><div class="line">var db = mysql.createConnection(&#123; </div><div class="line">         host: &apos;localhost&apos;, //主机名</div><div class="line">         user: &apos;root&apos;, //数据库用户名</div><div class="line">         password: &apos;123456&apos;, //用户对应得密码</div><div class="line">         database: &apos;lzoxun&apos; //要用的数据库名</div><div class="line">         //prot:&apos;3306&apos; 端口号 默认3306</div><div class="line">     &#125;)</div><div class="line"></div><div class="line">//2 查询  db.query(干什么,回调)</div><div class="line">              `SELECT * FROM usersheet`  `$&#123;bianliang&#125;`</div><div class="line">     db.query(&quot;SELECT * FROM `usersheet`;&quot;,function(err,data)&#123;</div><div class="line">         if(err)&#123;</div><div class="line">             console.log(&quot;出错了&quot;, err)</div><div class="line">         &#125;else&#123;</div><div class="line">             console.log(&quot;成功了&quot;, data)</div><div class="line">         &#125;</div><div class="line">     &#125;)</div><div class="line"></div><div class="line">//注:通过SQL =&gt; Structured Query Language  结构化查询语句 进行交互</div><div class="line">//       SQL =&gt; 所有数据库操作的基础 </div><div class="line">//       所欲数据库都是通过SQL与编程语言通信的</div><div class="line">//       SQL == DBA</div></pre></td></tr></table></figure>
 
           
         
@@ -1113,208 +1356,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/30/mongoDB/" itemprop="url">
-                  mongoDB
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-30T21:57:26+08:00" content="2016-12-30">
-              2016-12-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/30/mongoDB/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/mongoDB/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>(1) 基本使用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//安装好之后,从bin目录中找到mongod.exe 和 mongo.exe</span></div><div class="line"><span class="comment">//mongod 启动后台数据库，mongo 启动前台连接数据库(要在C盘创建一个 data/db目录)</span></div><div class="line"></div><div class="line"><span class="comment">//启动mongo</span></div><div class="line">show dbs <span class="comment">//查看所有数据库</span></div><div class="line">         <span class="comment">//新创建的数据库不在数据列表中，要插入一下数据才能显示</span></div><div class="line"></div><div class="line">db <span class="comment">//显示当前数据库  </span></div><div class="line"><span class="comment">//mongodb 分  数据库(database) =&gt; 集合() =&gt;文档对象</span></div><div class="line"><span class="comment">//mysql   分  数据库 =&gt; 表 =&gt; 记录 </span></div><div class="line"></div><div class="line">use DATABASE_NAME <span class="comment">//打开或创建数据库</span></div><div class="line"></div><div class="line">db.createCollection(<span class="string">"集合名"</span>) <span class="comment">//手动在当前数据库下创建一个集合</span></div><div class="line">show collection <span class="comment">//显示当前数据库下得集合</span></div><div class="line"></div><div class="line">db.集合名.insert(&#123;<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"name"</span>:<span class="string">"liaozhongxun"</span>,<span class="string">"age"</span>:<span class="string">"20"</span>&#125;) </div><div class="line"><span class="comment">//往当前数据库的这个集合中插入一个文档对象(如果没有这个集合就默认创建一个)</span></div><div class="line"></div><div class="line">db.dropDatabase()  <span class="comment">//删除当前数据库</span></div><div class="line">db.集合名.drop() <span class="comment">//删除当前数据库下得某个集合</span></div><div class="line"></div><div class="line"><span class="comment">//=======================文档操作</span></div><div class="line"><span class="comment">//通过insert给集合插入文档</span></div><div class="line"><span class="comment">//db.集合名.save 也能新增文档</span></div><div class="line"><span class="comment">//给集合添加文档时 _id(主键)重复 insert方式会报错,save方式会更新</span></div><div class="line"></div><div class="line">db.集合名.find() <span class="comment">//显示当前表的所有记录(没有设置id的对象会自动添加一个)</span></div><div class="line">db.集合名.find().prettye <span class="comment">//格式化查找到的记录 find中都能带条件</span></div><div class="line">db.集合名.find().count() <span class="comment">//记录个数</span></div><div class="line">db.集合名.find().limit(<span class="number">3</span>) <span class="comment">//只要3条</span></div><div class="line">db.集合名.find().skip(<span class="number">3</span>) <span class="comment">//跳过第3条</span></div><div class="line">db.集合名.findOne() <span class="comment">//显示符合要求的第一个对象</span></div><div class="line"></div><div class="line">db.集合名.updata(&#123;<span class="string">"条件字段名"</span>,<span class="string">"条件字段值"</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="string">"要修改的字段名"</span>:<span class="string">"修改后的字段值"</span>&#125;&#125;)  <span class="comment">//收到更新指定字段</span></div><div class="line"></div><div class="line">db.集合名.remove(&#123;<span class="string">"条件字段名"</span>,<span class="string">"条件字段值"</span>&#125;) <span class="comment">//删除指定文档</span></div><div class="line">db.集合名.remove() <span class="comment">//删除所有文档</span></div><div class="line"></div><div class="line"><span class="comment">//======================条件</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;  得到age &gt; 5 的所有记录</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;.sort("age":1)  得到的记录中 按age升序</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;.sort("age":-1)  得到的记录中 按age降序</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//=======================与nodejs连接</span></div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/26/Express/" itemprop="url">
-                  Express
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-26T20:36:35+08:00" content="2016-12-26">
-              2016-12-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/26/Express/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/Express/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>(1)安装<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ npm install -g express-generator@<span class="number">4</span>  </div><div class="line"></div><div class="line"><span class="comment">//创建express工程</span></div><div class="line">$ express /tmp/foo &amp;&amp; cd /tmp/foo </div><div class="line"><span class="comment">//创建不同的express工程,ejs模式比较简单</span></div><div class="line">$ express ejs expreEjs &amp;&amp; cd /expreEjs</div><div class="line"></div><div class="line">$ npm install</div><div class="line"></div><div class="line">$ npm start</div><div class="line"></div><div class="line"><span class="comment">//访问 http://localhost:3000/</span></div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1360,7 +1401,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
