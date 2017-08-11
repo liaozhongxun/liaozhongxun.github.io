@@ -264,350 +264,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/30/mongoDB/" itemprop="url">
-                  mongoDB
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-30T21:57:26+08:00" content="2016-12-30">
-              2016-12-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/30/mongoDB/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/mongoDB/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>(1) 基本使用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//安装好之后,从bin目录中找到mongod.exe 和 mongo.exe</span></div><div class="line"><span class="comment">//mongod 启动后台数据库，mongo 启动前台连接数据库(要在C盘创建一个 data/db目录)</span></div><div class="line"></div><div class="line"><span class="comment">//启动mongo</span></div><div class="line">show dbs <span class="comment">//查看所有数据库</span></div><div class="line">         <span class="comment">//新创建的数据库不在数据列表中，要插入一下数据才能显示</span></div><div class="line"></div><div class="line">db <span class="comment">//显示当前数据库  </span></div><div class="line"><span class="comment">//mongodb 分  数据库(database) =&gt; 集合() =&gt;文档对象</span></div><div class="line"><span class="comment">//mysql   分  数据库 =&gt; 表 =&gt; 记录 </span></div><div class="line"></div><div class="line">use DATABASE_NAME <span class="comment">//打开或创建数据库</span></div><div class="line"></div><div class="line">db.createCollection(<span class="string">"集合名"</span>) <span class="comment">//手动在当前数据库下创建一个集合</span></div><div class="line">show collection <span class="comment">//显示当前数据库下得集合</span></div><div class="line"></div><div class="line">db.集合名.insert(&#123;<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"name"</span>:<span class="string">"liaozhongxun"</span>,<span class="string">"age"</span>:<span class="string">"20"</span>&#125;) </div><div class="line"><span class="comment">//往当前数据库的这个集合中插入一个文档对象(如果没有这个集合就默认创建一个)</span></div><div class="line"></div><div class="line">db.dropDatabase()  <span class="comment">//删除当前数据库</span></div><div class="line">db.集合名.drop() <span class="comment">//删除当前数据库下得某个集合</span></div><div class="line"></div><div class="line"><span class="comment">//=======================文档操作</span></div><div class="line"><span class="comment">//通过insert给集合插入文档</span></div><div class="line"><span class="comment">//db.集合名.save 也能新增文档</span></div><div class="line"><span class="comment">//给集合添加文档时 _id(主键)重复 insert方式会报错,save方式会更新</span></div><div class="line"></div><div class="line">db.集合名.find() <span class="comment">//显示当前表的所有记录(没有设置id的对象会自动添加一个)</span></div><div class="line">db.集合名.find().prettye <span class="comment">//格式化查找到的记录 find中都能带条件</span></div><div class="line">db.集合名.find().count() <span class="comment">//记录个数</span></div><div class="line">db.集合名.find().limit(<span class="number">3</span>) <span class="comment">//只要3条</span></div><div class="line">db.集合名.find().skip(<span class="number">3</span>) <span class="comment">//跳过第3条</span></div><div class="line">db.集合名.findOne() <span class="comment">//显示符合要求的第一个对象</span></div><div class="line"></div><div class="line">db.集合名.updata(&#123;<span class="string">"条件字段名"</span>,<span class="string">"条件字段值"</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="string">"要修改的字段名"</span>:<span class="string">"修改后的字段值"</span>&#125;&#125;)  <span class="comment">//收到更新指定字段</span></div><div class="line"></div><div class="line">db.集合名.remove(&#123;<span class="string">"条件字段名"</span>,<span class="string">"条件字段值"</span>&#125;) <span class="comment">//删除指定文档</span></div><div class="line">db.集合名.remove() <span class="comment">//删除所有文档</span></div><div class="line"></div><div class="line"><span class="comment">//======================条件</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;  得到age &gt; 5 的所有记录</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;.sort("age":1)  得到的记录中 按age升序</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;.sort("age":-1)  得到的记录中 按age降序</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//=======================与nodejs连接</span></div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/26/Express/" itemprop="url">
-                  Express
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-26T20:36:35+08:00" content="2016-12-26">
-              2016-12-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/26/Express/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/Express/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>(1)安装<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ npm install -g express-generator@<span class="number">4</span>  </div><div class="line"></div><div class="line"><span class="comment">//创建express工程</span></div><div class="line">$ express /tmp/foo &amp;&amp; cd /tmp/foo </div><div class="line"><span class="comment">//创建不同的express工程,ejs模式比较简单</span></div><div class="line">$ express ejs expreEjs &amp;&amp; cd /expreEjs</div><div class="line"></div><div class="line">$ npm install</div><div class="line"></div><div class="line">$ npm start</div><div class="line"></div><div class="line"><span class="comment">//访问 http://localhost:3000/</span></div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/24/nodejs/" itemprop="url">
-                  nodejs
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-24T10:37:27+08:00" content="2016-12-24">
-              2016-12-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/24/nodejs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/24/nodejs/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="NODE"><a href="#NODE" class="headerlink" title="NODE"></a>NODE</h1><h2 id="node的基本概念1"><a href="#node的基本概念1" class="headerlink" title="node的基本概念1"></a>node的基本概念1</h2><hr>
-<p>(1) nodejs 是一个让JavaScript运行在服务端的平台</p>
-<h2 id="node内置全局变量"><a href="#node内置全局变量" class="headerlink" title="node内置全局变量"></a>node内置全局变量</h2><hr>
-<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//process</span></div><div class="line"><span class="comment">//arr[0] 是node，arr[1]是脚本文件名，arr[3]开始每个元素是一个运行参数。</span></div><div class="line"><span class="built_in">console</span>.log(precess.argv); <span class="comment">//process.argv返回命令行参数数组</span></div><div class="line"></div><div class="line">process.stdout.write(<span class="string">""</span>);  <span class="comment">//标准输出流  console.log的底层也是这个</span></div><div class="line"></div><div class="line">process.stdin.resume(); <span class="comment">//标准输入流</span></div><div class="line">process.stdin.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;<span class="comment">//获取输入的数据</span></div><div class="line">    process.stdout.write(data)</div><div class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//得到的buffer值</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">//或</span></div><div class="line">process.stdin.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> chunk = process.stdin.read();</div><div class="line">  <span class="keyword">if</span> (chunk !== <span class="literal">null</span>) &#123;</div><div class="line">    process.stdout.write(<span class="string">'data: '</span> + chunk);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="Buffer-用于操作二进制数据流"><a href="#Buffer-用于操作二进制数据流" class="headerlink" title="Buffer 用于操作二进制数据流"></a>Buffer 用于操作二进制数据流</h3><hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//创建Buffer对象 并且为这个对象分配一个大小</span></div><div class="line"><span class="comment">//new Buffer(size||[]) 第二个参数能指定编码   </span></div><div class="line"><span class="comment">//当为一个buffer对象分配了一个空间大小之后其长度是不能改变的</span></div><div class="line"><span class="keyword">var</span> bf = <span class="keyword">new</span> Buffer(<span class="string">'liaozhongxun'</span>) </div><div class="line"><span class="built_in">console</span>.log(bf);</div><div class="line"><span class="built_in">console</span>.log(bf.length) <span class="comment">// bf的字节长度</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>.fromCharCode( bf[<span class="number">0</span>] )); <span class="comment">//将bf二进制转化为字符</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> bf1 = <span class="keyword">new</span> Buffer(<span class="number">9</span>)</div><div class="line">bf1.write(<span class="string">"liaozhong"</span>,<span class="number">2</span>,<span class="number">5</span>) <span class="comment">//只会写入五个字符,偏移,写入的长度,字符串的编码(默认utf-8)</span></div><div class="line"><span class="built_in">console</span>.log(bf1) <span class="comment">//只有bf1的第三个位置有一个值</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( bf1.toString() ) <span class="comment">//将bf对象转化为字符串</span></div><div class="line"><span class="built_in">console</span>.log( bf1.toString(<span class="string">"utf-8"</span>,<span class="number">1</span>,<span class="number">3</span>) ) <span class="comment">//从第一位开始 返回长度3 不包括第3个</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> bf2 = bf1.slice(<span class="number">2</span>,<span class="number">3</span>) <span class="comment">//从位置2开始 到位置3 不包括3</span></div><div class="line"><span class="built_in">console</span>.log(bf2)  <span class="comment">//bf2与bf1引用的对象是相同的,改变bf2也会改变bf1</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> bf3 = <span class="keyword">new</span> Buffer(<span class="number">10</span>); </div><div class="line">bf1.copy(bf3,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>) ;  <span class="comment">//这样就不影响原来的对象了, </span></div><div class="line"><span class="comment">//参数2 拷贝到目标对象的第几位</span></div><div class="line"><span class="comment">//参数3、4  拷贝原对象的第几位到第几位</span></div><div class="line"><span class="built_in">console</span>.log(bf3)</div><div class="line"></div><div class="line"><span class="comment">//Buffer 类犯法、对象方法</span></div><div class="line">Buffer.isEncoding(<span class="string">'utf-8'</span>);</div></pre></td></tr></table></figure>
-<h2 id="模块和包的概念"><a href="#模块和包的概念" class="headerlink" title="模块和包的概念"></a>模块和包的概念</h2><hr>
-<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><hr>
-<p>nodejs中一个js文件就是一个模块,模块中可以通过require(“”)引入node核心模块或 自定义模块或依赖包</p>
-<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><hr>
-<p>包是在模块的基础上深层的抽象,模块的集合,他将某个独立功能封装起来,用于发布、更新、依赖管理版本控制, 通过npm获取需求</p>
-<h2 id="node的内置核心模块"><a href="#node的内置核心模块" class="headerlink" title="node的内置核心模块"></a>node的内置核心模块</h2><hr>
-<h3 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h3><hr>
-<h4 id="服务端-http模块"><a href="#服务端-http模块" class="headerlink" title="服务端 http模块"></a>服务端 http模块</h4><hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//引入模块</span></div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="string">``</span></div><div class="line"><span class="comment">//====================================================</span></div><div class="line"><span class="comment">//原生的创建服务</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> server = <span class="keyword">new</span> http.Server();</div><div class="line">server.on(<span class="string">"request"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line">    <span class="comment">//响应头</span></div><div class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/html'</span>&#125;)</div><div class="line">    <span class="comment">//响应内容</span></div><div class="line">    res.write(<span class="string">'&lt;h1&gt;启成功&lt;/h1&gt;'</span>)</div><div class="line">    <span class="comment">//结束响应</span></div><div class="line">    res.end(<span class="string">'&lt;h1&gt;结束&lt;/h1&gt;'</span>)</div><div class="line">&#125;)</div><div class="line">server.listen(<span class="number">8080</span>)</div><div class="line"></div><div class="line"><span class="comment">//====================================================</span></div><div class="line"><span class="comment">//创建服务</span></div><div class="line"></div><div class="line"><span class="comment">//req 请求信息 对应事件:http.ServerRequest,</span></div><div class="line"><span class="comment">//res 响应信息 对应事件:http.ServerResponse</span></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line">    <span class="comment">//获得请求url</span></div><div class="line">    <span class="built_in">console</span>.log(req.url)</div><div class="line"></div><div class="line">    <span class="comment">//post方式体积大 -- 分段</span></div><div class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</div><div class="line">    <span class="comment">//获取post方式请求的数据</span></div><div class="line">    req.on(<span class="string">"data"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</div><div class="line">        str += chunk;</div><div class="line">    &#125;)</div><div class="line">    <span class="comment">//数据全部到达时执行</span></div><div class="line">    req.on(<span class="string">"end"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(str)</div><div class="line">    &#125;)</div><div class="line">  <span class="comment">//请求相关事件</span></div><div class="line">  <span class="comment">//data：当请求体数据到来时，该事件被触发，该事件一共一个参数chunk，表示接受到的数据。</span></div><div class="line">  <span class="comment">//end：当请求体数据传输完成时，该事件被触发，此后将不会再有数据到来。</span></div><div class="line">  <span class="comment">//close：用户当前请求结束时，该事件被触发，不同于end，如果用户强制终止了传输，也会触发close</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">//响应头</span></div><div class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/html'</span>&#125;) <span class="comment">//告诉浏览器响应内容的格式</span></div><div class="line">    <span class="comment">//响应内容</span></div><div class="line">    res.write(<span class="string">'&lt;h1&gt;启ggg成功&lt;/h1&gt;'</span>)</div><div class="line">    <span class="comment">//结束响应</span></div><div class="line">    res.end(<span class="string">'&lt;h1&gt;结束&lt;/h1&gt;'</span>) <span class="comment">//如果没有结束响应,请求的时候回一直转</span></div><div class="line">  <span class="comment">//监听端口</span></div><div class="line">&#125;).listen(<span class="number">8081</span>)</div><div class="line"></div><div class="line"><span class="comment">//====================================================</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> server2 = http.createServer();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//监听错误</span></div><div class="line">server2.on(<span class="string">"error"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(err)</div><div class="line">&#125;)</div><div class="line"><span class="comment">//请求</span></div><div class="line">server2.on(<span class="string">"request"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">"客户的请求server2了"</span>)</div><div class="line">     <span class="comment">//响应内容</span></div><div class="line">    res.write(<span class="string">'&lt;h1&gt;启ggg成功&lt;/h1&gt;'</span>);</div><div class="line">    <span class="comment">//结束响应</span></div><div class="line">    res.end(<span class="string">'&lt;h1&gt;结束&lt;/h1&gt;'</span>) <span class="comment">//调用该方法告诉服务器所有信息已经发送完成了</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//监听端口成功后触发的事件</span></div><div class="line">server2.on(<span class="string">"listening"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"listening..."</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"></div><div class="line">server2.listen(<span class="number">8082</span>)</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">   server.listen(port,[hostname],[backlog],[callback]);</span></div><div class="line"><span class="comment">   --port : 监听的端口</span></div><div class="line"><span class="comment">   --hostnamm : 主机名(IP/域名)</span></div><div class="line"><span class="comment">   --backlog : 连接等待队列的最大长度</span></div><div class="line"><span class="comment">   --callback : 调用listen监听端口成功之后 会触发一个listening事件,callback将作为该事件的执行函数</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="built_in">console</span>.log(server2.address());</div></pre></td></tr></table></figure>
-<h3 id="file模块"><a href="#file模块" class="headerlink" title="file模块"></a>file模块</h3><hr>
-<p>文件的每个方法都有对应的同步方法,同步方法没有回调函数<br>(1) open等底层方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">fs.open(path,flage,[mode],callback);</span></div><div class="line"><span class="comment">path: 打开的文件路径</span></div><div class="line"><span class="comment">flage: 打开文件的方式 读/读写  r/r+</span></div><div class="line"><span class="comment">[modo]: 设置文件模式 读/写/执行</span></div><div class="line"><span class="comment">callback:</span></div><div class="line"><span class="comment">      err：打开失败错误信息,如果成功 err = null</span></div><div class="line"><span class="comment">      fd：被打开文件的标识 </span></div><div class="line"><span class="comment">*/</span></div><div class="line">fs.open(<span class="string">"file.txt"</span>,<span class="string">"r+"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,fd</span>)</span>&#123; <span class="comment">//模式是可有可无的</span></div><div class="line">    <span class="keyword">if</span>(err)&#123; <span class="comment">//err为错误对象</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"文件打开失败"</span>)</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(fd); <span class="comment">//当前打开文件的编号 通过这个编号操作file.txt</span></div><div class="line"></div><div class="line">        <span class="comment">/* ==================fs.read</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">        fs.read(fd,buffer,offset,length,posotion,callback);</span></div><div class="line"><span class="comment">        fd:读取文件的到fd</span></div><div class="line"><span class="comment">        buffer:读取数据到这来</span></div><div class="line"><span class="comment">        offset:读取的信息写入buffer的偏移位置</span></div><div class="line"><span class="comment">        positong:读取文件的偏移位置</span></div><div class="line"><span class="comment">        length: 添加多少长度</span></div><div class="line"><span class="comment">        */</span></div><div class="line">        <span class="keyword">var</span> buf = <span class="keyword">new</span> Buffer(<span class="string">'liaozhongxun'</span>);</div><div class="line">        <span class="built_in">console</span>.log(buf)</div><div class="line">        fs.read(fd,buf,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,len,newbuf</span>)</span>&#123;</div><div class="line">            <span class="comment">//err 错误信息</span></div><div class="line">            <span class="comment">//len  读取字节的长度</span></div><div class="line">            <span class="comment">//newbuf 新生成的buf对象 ,</span></div><div class="line">            <span class="built_in">console</span>.log(err)  <span class="comment">//null</span></div><div class="line">            <span class="built_in">console</span>.log(len)  <span class="comment">//8</span></div><div class="line">            <span class="built_in">console</span>.log(buf.toString())  </div><div class="line">            <span class="built_in">console</span>.log(newbuf)</div><div class="line">            <span class="built_in">console</span>.log(buf == newbuf)  <span class="comment">//true</span></div><div class="line">        &#125;)</div><div class="line"></div><div class="line">        <span class="comment">/* ===================fs.write</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">        fs.write(fd,buffer,offset,length,posotion,callback)</span></div><div class="line"><span class="comment">        fd:操作的文件</span></div><div class="line"><span class="comment">        buffer:写入文件的数据</span></div><div class="line"><span class="comment">        offset:buffer 对象中要写入的数据的起始位置</span></div><div class="line"><span class="comment">        length:要写入的buffer数据的长度</span></div><div class="line"><span class="comment">        position:写入fd的起始位置</span></div><div class="line"><span class="comment">        */</span></div><div class="line">        <span class="keyword">var</span> bf2 = <span class="keyword">new</span> Buffer(<span class="string">"liaozhong"</span>)</div><div class="line">        fs.write(fd,bf2,<span class="number">0</span>,<span class="number">5</span>,<span class="number">0</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">             <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">        <span class="comment">//write bf对象可以改成字符串</span></div><div class="line">        <span class="comment">//fs.write(fd,str,填写到文件的位置,编码) 添加整个字符串</span></div><div class="line"></div><div class="line">        <span class="comment">//fs.close(fd,callback) 关闭文件</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>(2) 快捷方法 - &gt; 读取文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="comment">//异步读取</span></div><div class="line">fs.readFile(<span class="string">'file.txt'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123; </div><div class="line">    <span class="keyword">if</span>(err)&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"读取失败"</span>)</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"readFile异步 后出 得到的内容是"</span> + data)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"readFile异步 先出 无阻赛"</span>);</div><div class="line"></div><div class="line"><span class="comment">//同步读取</span></div><div class="line"><span class="keyword">var</span> SyncFs = fs.readFileSync(<span class="string">'file.txt'</span>,<span class="string">'UTF-8'</span>) <span class="comment">//同步不需要回调</span></div><div class="line"><span class="built_in">console</span>.log(SyncFs);</div><div class="line"></div><div class="line"><span class="comment">//删除文件</span></div><div class="line">fs.unlink(<span class="string">"2.txt"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err)&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"删除失败"</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"删除成功"</span>))</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">//文件重命名</span></div><div class="line">fs.rename(<span class="string">"2.txt"</span>,<span class="string">"new.text"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</div><div class="line"></div><div class="line"><span class="comment">//查看文件状态信息</span></div><div class="line">fs.stat(<span class="string">"2.txt"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">file,fileInfo</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</div><div class="line">    fileInfo.modo == <span class="number">16822</span>  <span class="comment">//文件类型为文件夹</span></div><div class="line">    fileInfo.modo == <span class="number">33206</span>  <span class="comment">//文件类型为文件</span></div><div class="line">&#125;) <span class="comment">//文件的信息</span></div></pre></td></tr></table></figure>
-<p>(3) 快捷方法 - &gt; 写入文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> filename = <span class="string">'2.txt'</span>;<span class="comment">//有这个文件就覆盖,没有就先创建文件在添加</span></div><div class="line">fs.writeFile(filename,<span class="string">"hello"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//参数二可以是 str 也能是buffer</span></div><div class="line"></div><div class="line">&#125;)</div><div class="line"></div><div class="line">fs.appendFild() <span class="comment">//追加</span></div><div class="line">fs.exists(filename,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;err为<span class="literal">false</span>就文件不存在&#125;) <span class="comment">//判断文件是否存在</span></div></pre></td></tr></table></figure>
-<p>(4) 文件watch监听<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> filename = <span class="string">'2.txt'</span>;</div><div class="line">fs.watch(filename,<span class="function"><span class="keyword">function</span>(<span class="params">ev,fn</span>)</span>&#123; </div><div class="line">   <span class="built_in">console</span>.log(ev) <span class="comment">//文件发生了什么样的变化 </span></div><div class="line">   <span class="keyword">if</span>(fn)&#123; <span class="comment">//保证fn的存在，因为有的操作系统不提供fn</span></div><div class="line">       <span class="built_in">console</span>.log(fn + <span class="string">"发生了改变"</span>)</div><div class="line">   &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>(5) 文件夹操作<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"></div><div class="line"><span class="comment">//fs.mkdir(path,[modo权限],callback) </span></div><div class="line">fs.mkdir(<span class="string">"./xinjian"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) <span class="comment">//创建文件夹</span></div><div class="line"></div><div class="line"><span class="comment">//fs.rmdir(path,function()&#123;&#125;)</span></div><div class="line">fs.rmdir(<span class="string">"./xinjian"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) <span class="comment">// 删除文件夹</span></div><div class="line"></div><div class="line"><span class="comment">//fs.readdir(path,function(arr,fileList)&#123;&#125;)</span></div><div class="line">fs.readdir(<span class="string">"./"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">arr,fileList</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(fileList)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<h3 id="event-事件"><a href="#event-事件" class="headerlink" title="event 事件"></a>event 事件</h3><hr>
-<p>(1)事件方法</p>
-<pre><code>EventEmitter.on(event,listener)为指定事件注册一个监听器，接受一个字符串event和一个回调函数listener
-EventEmitter.emit(event,[arg1],[arg2]....) 发射event事件，传递若干可选参数到事件监听器的参数表
-EventEmitter.once(event,listener) 为指定事件注册一个单次监听器，即监听器最多只会触发一次，触发后立刻解除该监听器。
-EventEmitter.removeListener(event,listener)移除指定事件的某个监听器，listener必须是该事件已经注册过的监听器。
-EventEmitter.removeAllListeners([event]) 移除所有事件的所有监听器，如果指定event，则移除指定事件的所有监听器。
-</code></pre><p>(2) 声明一个事件对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//申明一个事件对象</span></div><div class="line"><span class="keyword">var</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>).EventEmitter;</div><div class="line"><span class="keyword">var</span> event = <span class="keyword">new</span> EventEmitter();</div><div class="line"></div><div class="line"><span class="comment">//注册一个事件</span></div><div class="line">event.on(<span class="string">"console_event"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">arg1,arg2</span>)</span>&#123; <span class="comment">//事件名 和该事件所要做的是</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"这是一个自定义事件"</span>,arg1,arg2)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//注册的事件有多个监听器  触发是两个方法依次执行</span></div><div class="line">event.on(<span class="string">"console_event"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//事件名 和该事件所要做的是</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"这是第二个个自定义事件"</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//触发事件</span></div><div class="line">event.emit(<span class="string">"console_event"</span>,<span class="string">"参数1"</span>,<span class="string">"参数2"</span>);</div><div class="line">event.emit(<span class="string">"console_event"</span>,<span class="string">"参数1"</span>,<span class="string">"参数2"</span>); <span class="comment">//如果是 once方式注册的 这里就不会触发了</span></div><div class="line"><span class="comment">// 输出</span></div><div class="line"><span class="comment">// 这是一个自定义事件 参数1 参数2</span></div><div class="line"><span class="comment">// 这是第二个个自定义事件</span></div><div class="line"></div><div class="line">event.emit(<span class="string">"error"</span>) <span class="comment">//内置事件 直接可以触发</span></div></pre></td></tr></table></figure></p>
-<p>(3) nodejs的事件循环机制<br>    node程序是由事件循环开始到事件循环结束,所有逻辑都是事件的回调函数</p>
-<h3 id="util"><a href="#util" class="headerlink" title="util"></a>util</h3><hr>
-<p>(1) util 提供的继承 util.inherits(Sub,Parent)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">"util"</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Base</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = <span class="string">"base"</span>;</div><div class="line">    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log( <span class="keyword">this</span>.name + <span class="string">"的函数"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Base.prototype.giveSub=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"给你"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">util.inherits(Sub,Base); <span class="comment">//Sub 构造函数继承 Base.prototype的所有方法</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> Base = <span class="keyword">new</span> Base();</div><div class="line">Base.say();  <span class="comment">//正常</span></div><div class="line">Base.giveSub();  <span class="comment">//正常</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> Sub = <span class="keyword">new</span> Sub();</div><div class="line">Sub.say();  <span class="comment">//报错</span></div><div class="line">Sub.giveSub();  <span class="comment">//给你</span></div></pre></td></tr></table></figure></p>
-<p>(2)util.inspect(object,[showHidden],[depth],[colors])</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">console</span>.log(Base)</div><div class="line"><span class="built_in">console</span>.log(util.inspect(Base))</div><div class="line"><span class="built_in">console</span>.log(util.inspect(Base,<span class="literal">true</span>,<span class="number">2</span>,<span class="literal">true</span>))</div><div class="line"><span class="comment">//showHidden : 是一个可选参数，如果值为true，将会输出更多隐藏信息.</span></div><div class="line"><span class="comment">//depth : 标识最大的递归的层数，如果对象很复杂，你可以指定层数以控制输出信息的多少。默认为2层，指定为null打印出来全部</span></div><div class="line"><span class="comment">//color为true，输出格式将会以ANSI颜色编码，通常用于在终端显示更漂亮的效果。</span></div></pre></td></tr></table></figure>
-<h3 id="Url"><a href="#Url" class="headerlink" title="Url"></a>Url</h3><hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">"url"</span>);</div><div class="line"></div><div class="line"><span class="comment">//解析客户端到服务的的url 参数二默认为false,改为true的话 会对象形式输出query</span></div><div class="line">urlarr = url.parse(url,<span class="literal">false</span>,<span class="literal">true</span>) </div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</div><div class="line">url.format(&#123;  <span class="comment">//将对象转为url</span></div><div class="line">    protocol: <span class="string">'http:'</span>,</div><div class="line">    hostname:<span class="string">'www.baidu.com'</span>,</div><div class="line">    port:<span class="string">'80'</span>,</div><div class="line">    pathname :<span class="string">'/news'</span>,</div><div class="line">    query:&#123;<span class="attr">page</span>:<span class="number">1</span>&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</div><div class="line"></div><div class="line"><span class="comment">//normalize函数将不符合规范的路径经过格式化转换为标准路径</span></div><div class="line">path.normalize(<span class="string">'/path///normalize/hi/..'</span>); <span class="comment">// '/path/normalize/' ,解析路径中的.与..外，还能去掉多余的斜杠。</span></div><div class="line"></div><div class="line"><span class="comment">//组合路径</span></div><div class="line">path.join(<span class="string">'///you'</span>, <span class="string">'/are'</span>, <span class="string">'//beautiful'</span>); <span class="comment">//  '/you/are/beautiful'</span></div><div class="line"></div><div class="line"><span class="comment">//dirname函数用来返回路径中的目录名</span></div><div class="line">path.dirname(<span class="string">'/foo/strong/cool/nice'</span>) <span class="comment">// '/foo/strong/cool'; </span></div><div class="line"></div><div class="line">basename函数可返回路径中的最后一部分，并且可以对其进行条件排除</div><div class="line">例<span class="number">1</span>：path.basename(<span class="string">'路径字符串'</span>);</div><div class="line"><span class="keyword">var</span> data1 = path.basename(<span class="string">'/foo/strong/basename/index.html'</span>); <span class="comment">//index.html</span></div><div class="line"></div><div class="line">例<span class="number">2</span>：path.basename(<span class="string">'路径字符串'</span>, <span class="string">'[ext]'</span>)&lt;排除[ext]后缀字符串&gt;;</div><div class="line"><span class="keyword">var</span> data2 = path.basename(<span class="string">'/foo/strong/basename/index.html'</span>,<span class="string">'.html'</span>); <span class="comment">//index</span></div><div class="line"></div><div class="line"><span class="comment">//返回文件扩展名</span></div><div class="line">path.extname(<span class="string">'index.html'</span>); <span class="comment">//.html  没有点则返回空</span></div></pre></td></tr></table></figure>
-<h3 id="querystring-序列化对象"><a href="#querystring-序列化对象" class="headerlink" title="querystring 序列化对象"></a>querystring 序列化对象</h3><hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> querystring = <span class="built_in">require</span>(<span class="string">"querystring"</span>);</div><div class="line"></div><div class="line"><span class="comment">//(1)将一个对象序列化为querystring字符串</span></div><div class="line">querystring.stringify(&#123; <span class="attr">foo</span>: <span class="string">'bar'</span>, <span class="attr">baz</span>: [<span class="string">'qux'</span>, <span class="string">'quux'</span>], <span class="attr">corge</span>: <span class="string">''</span> &#125;)</div><div class="line"><span class="comment">// returns</span></div><div class="line"><span class="string">'foo=bar&amp;baz=qux&amp;baz=quux&amp;corge='</span></div><div class="line"></div><div class="line"><span class="comment">//指定分隔符</span></div><div class="line">querystring.stringify(&#123;<span class="attr">foo</span>: <span class="string">'bar'</span>, <span class="attr">baz</span>: <span class="string">'qux'</span>&#125;, <span class="string">';'</span>, <span class="string">':'</span>)</div><div class="line"><span class="comment">// returns</span></div><div class="line"><span class="string">'foo:bar;baz:qux'</span></div><div class="line"></div><div class="line"><span class="comment">//中午编码</span></div><div class="line">querystring.stringify(</div><div class="line">     &#123; <span class="attr">w</span>: <span class="string">'中文'</span>, <span class="attr">foo</span>: <span class="string">'bar'</span> &#125;, </div><div class="line">     <span class="literal">null</span>, </div><div class="line">     <span class="literal">null</span>,</div><div class="line">     &#123; <span class="attr">encodeURIComponent</span>: gbkEncodeURIComponent &#125;</div><div class="line">)</div><div class="line"><span class="comment">// returns</span></div><div class="line"><span class="string">'w=%D6%D0%CE%C4&amp;foo=bar'</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//(2)将querystring字符串反序列化为对象</span></div><div class="line"><span class="comment">//querystring.parse(str[, sep][, eq][, options])</span></div><div class="line">querystring.parse(<span class="string">'foo=bar&amp;baz=qux&amp;baz=quux&amp;corge'</span>)</div><div class="line"><span class="comment">// returns</span></div><div class="line">&#123; <span class="attr">foo</span>: <span class="string">'bar'</span>, <span class="attr">baz</span>: [<span class="string">'qux'</span>, <span class="string">'quux'</span>], <span class="attr">corge</span>: <span class="string">''</span> &#125;</div></pre></td></tr></table></figure>
-<h1 id="NODE-WOS"><a href="#NODE-WOS" class="headerlink" title="NODE WOS"></a>NODE WOS</h1>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/12/18/ES6/" itemprop="url">
                   ES6
                 </a>
@@ -794,123 +450,9 @@ EventEmitter.removeAllListeners([event]) 移除所有事件的所有监听器，
 <h4 id="表格行列拖拽"><a href="#表格行列拖拽" class="headerlink" title="表格行列拖拽"></a>表格行列拖拽</h4><hr>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install table-dragger --save</div></pre></td></tr></table></figure>
 <h4 id="删除插件-删除node-node-modules"><a href="#删除插件-删除node-node-modules" class="headerlink" title="删除插件(删除node_node_modules)"></a>删除插件(删除node_node_modules)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g rimraf </div><div class="line">cd xxx  </div><div class="line">rimraf node_modules</div></pre></td></tr></table></figure>
-<h4 id="移动端真机调试"><a href="#移动端真机调试" class="headerlink" title="移动端真机调试"></a>移动端真机调试</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install table-dragger spy-<span class="keyword">debugger</span></div></pre></td></tr></table></figure>
+<h4 id="移动端真机调试"><a href="#移动端真机调试" class="headerlink" title="移动端真机调试"></a>移动端真机调试</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install spy-<span class="keyword">debugger</span> -g</div></pre></td></tr></table></figure>
 <h4 id="MySQL模块-node项目下安装之后，该node项目就能连接MySQL了"><a href="#MySQL模块-node项目下安装之后，该node项目就能连接MySQL了" class="headerlink" title="MySQL模块(node项目下安装之后，该node项目就能连接MySQL了)"></a>MySQL模块(node项目下安装之后，该node项目就能连接MySQL了)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mysql</div></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/15/WEB前端真机调试/" itemprop="url">
-                  WEB前端真机调试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-15T19:16:57+08:00" content="2016-12-15">
-              2016-12-15
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/15/WEB前端真机调试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/WEB前端真机调试/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="连接USB-Google调试"><a href="#连接USB-Google调试" class="headerlink" title="连接USB Google调试"></a>连接USB Google调试</h3><p>(1) 使用数据线连接安卓手机和电脑(USB驱动一定要全部成功安装)</p>
-<p>(2) 进入手机设置中的开发者选项 , 打开USB调试 ,手机上会跳出弹出框(给予计算机权限)</p>
-<p>(3) 确定之后 在Google中输入 chrome://inspect/就能查看到连接成功的设备,如果没有就没连接成功</p>
-<p>(4) 用手机打开本机开启的页面,能访问的页面,会自动线上在 chrome://inspect/ 下</p>
-<p>(5) 点击其下面的连接inspect 就能弹出真机调试框了</p>
-<p>(6) 但是有由于Google需要下载一下插件,所以第一次使用需要翻墙(不然就是白茫茫的一片)</p>
-<p>(7) 安装成功之后就有内容显示了</p>
-<h3 id="使用插件调试"><a href="#使用插件调试" class="headerlink" title="使用插件调试"></a>使用插件调试</h3><p>(1) 通过一下代码安装weinre 并启动服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install weinre -g --registry=https://registry.npm.taobao.org</div><div class="line">weinre --httpPort 8989 (端口随意设置)</div></pre></td></tr></table></figure>
-<p>(2) 浏览器中输入  <a href="http://localhost:8989" target="_blank" rel="external">http://localhost:8989</a>  打开页面</p>
-<p>(3) 这里会尝产生一个脚本文件,引入要调试的页面</p>
-<p><img src="/img/zjts_script.png" alt="引入这个脚本"></p>
-<p>(4) 下图中有两个链接,第一个是入口文件,进去后就能看的引入脚本文件,并且在浏览器打开的地址了</p>
-<p><img src="/img/zjts_in.png" alt="进入第一个链接入口文件"></p>
-<h3 id="原文连接-里面还有iPhone的方法-和一些其他的调试文章"><a href="#原文连接-里面还有iPhone的方法-和一些其他的调试文章" class="headerlink" title="原文连接 里面还有iPhone的方法,和一些其他的调试文章"></a><a href="http://www.tuicool.com/articles/MbYz6fA" target="_blank" rel="external">原文连接</a> 里面还有iPhone的方法,和一些其他的调试文章</h3>
           
         
       
@@ -1527,8 +1069,8 @@ function ajax(json){
             
               
                 
-                <a class="post-title-link" href="/2016/12/11/myAccumulation/" itemprop="url">
-                  myAccumulation
+                <a class="post-title-link" href="/2016/12/10/Markdown/" itemprop="url">
+                  Markdown
                 </a>
               
             
@@ -1541,8 +1083,8 @@ function ajax(json){
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-11T16:08:41+08:00" content="2016-12-11">
-              2016-12-11
+            <time itemprop="dateCreated" datetime="2016-12-10T14:00:57+08:00" content="2016-12-10">
+              2016-12-10
             </time>
           </span>
 
@@ -1552,8 +1094,8 @@ function ajax(json){
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/12/11/myAccumulation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/11/myAccumulation/" itemprop="commentsCount"></span>
+                <a href="/2016/12/10/Markdown/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/10/Markdown/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1578,14 +1120,440 @@ function ajax(json){
       
         
           
-            <h3 id="时低版本浏览器认识html5的语义化标签的两种方法"><a href="#时低版本浏览器认识html5的语义化标签的两种方法" class="headerlink" title="时低版本浏览器认识html5的语义化标签的两种方法"></a>时低版本浏览器认识html5的语义化标签的两种方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">document.creatElement(&quot;header&quot;) 创建该元素</div><div class="line"></div><div class="line">支持html5标签</div><div class="line">&lt;!--[if lt IE 9]&gt;&lt;script src=&quot;http://html5shiv.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</div><div class="line"></div><div class="line">支持低版本选择器(必须先引入一下js库官网上有 [http://selectivizr.com/)</div><div class="line">&lt;!--[if lte IE 8]&gt;&lt;script src=&quot;http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
-<h3 id="获取和标签写入的样式"><a href="#获取和标签写入的样式" class="headerlink" title="获取和标签写入的样式"></a>获取<link>和<style>标签写入的样式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> obj = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>]; <span class="comment">// [object StyleSheetList] 样式表的个数&lt;link&gt;var rule = null;// [object CSSRule]</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (obj.cssRules)&#123;</div><div class="line"></div><div class="line">    rule = obj.cssRules[<span class="number">0</span>];  <span class="comment">// 非IE [object CSSRuleList]</span></div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">    rule = obj.rules[<span class="number">0</span>];     <span class="comment">// IE [object CSSRuleList]</span></div><div class="line"></div><div class="line">&#125; </div><div class="line"></div><div class="line">alert(rule.style.width); </div><div class="line"></div><div class="line"><span class="comment">//cssRules(或rules)只能获取到内联和链接样式的宽和高，不能获取到行内和计算后的样式。</span></div></pre></td></tr></table></figure>
-<h3 id="小程序"><a href="#小程序" class="headerlink" title="小程序"></a>小程序</h3><p>(1)小程序中rpx与px的转换</p>
-<p>例如：设计稿750px宽度</p>
-<p>ps上量出宽度是多少，那么你就定义多少rpx，也就是 1px = 1rpx</p>
-<p>例如：设计稿640px宽度</p>
-<p>那么很遗憾，你需要转换一下 1px = 750/640 rpx</p>
-</style></h3>
+            <p>==&gt; 1~6个#分别代表 1~6级标题</p>
+<p>==&gt; 前后 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```javascript</div><div class="line">var a = 10;</div></pre></td></tr></table></figure></p>
+<p>==&gt; 一个 &gt; 标注行头, 两个则嵌套</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>尖括号嵌套</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>==&gt; 加粗 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">**加粗**</div></pre></td></tr></table></figure>
+<blockquote>
+<p>加粗 <strong>Cmd Markdown</strong></p>
+</blockquote>
+<p>==&gt; 倾斜<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*倾斜*</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><em>倾斜</em></p>
+</blockquote>
+<p>==&gt; * 创建列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; * List1</div><div class="line">&gt; * List2</div><div class="line">&gt; * List3</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>List1</li>
+<li>List2</li>
+<li>List3</li>
+</ul>
+</blockquote>
+<p>==&gt; ! [ alt属性值 ] (图片路径)   //创建一个图片</p>
+<blockquote>
+<p><img src="https://www.zybuluo.com/static/img/logo.png" alt="cmd-markdown-logo"></p>
+</blockquote>
+<p>==&gt; [连接内容] ( 连接地址 )    创建一个连接</p>
+<blockquote>
+<p><a href="https://www.baidu.com" target="_blank" rel="external">百度</a></p>
+</blockquote>
+<p>==&gt; &lt; i class=”icon-file “ &gt; &lt; /i &gt;   引用ico小图标</p>
+<blockquote>
+<p><i class="icon-file"></i></p>
+</blockquote>
+<p>==&gt; 前后一个 ` ,添加背景</p>
+<blockquote>
+<p><code>Ctrl+Alt+N</code> </p>
+</blockquote>
+<p>==&gt; - [x] 复选框  前后必须是空行(没有叉叉代表没选中)</p>
+<ul>
+<li>[ ] 复选框</li>
+<li>[x] 复选框</li>
+</ul>
+<p>==&gt; 绘制表格  | —: | :— |:—:| 控制方向 有这种线的上行代表表头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">| 项目        | 价格   |  数量  |</div><div class="line">| --------   | -----:  | :----:  |</div><div class="line">| 计算机     | \$1600 |   5     |</div><div class="line">| 手机        |   \$12   |   12   |</div><div class="line">| 管线        |    \$1    |  234  |</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align:right">价格</th>
+<th style="text-align:center">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>计算机</td>
+<td style="text-align:right">\$1600</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td>手机</td>
+<td style="text-align:right">\$12</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td>管线</td>
+<td style="text-align:right">\$1</td>
+<td style="text-align:center">234</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/10/Git使用基础/" itemprop="url">
+                  git使用基础
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-10T11:52:04+08:00" content="2016-12-10">
+              2016-12-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/10/Git使用基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/10/Git使用基础/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>==&gt; git命令中一般 - 跟简称 – 跟全称 （ 如: -h/–help）</p>
+<p>==&gt; git init  //创建本地git仓库</p>
+<p>==&gt; git config -h //帮助</p>
+<p>==&gt; git config –list  //查看git所有配置</p>
+<pre><code>git 配置分为三部分
+
+    1、本地配置位于本地仓库的隐藏文件夹.git/config 文件  默认以core开头
+
+       git config --local --list (只 本地配置)
+
+    2、全局配置位于用户的根目录下 .gitconfig  //需要进行过全局配置才会有该文件
+
+       git config --global --list (只 全局配置)
+
+    3、系统配置位于git的安装目录下
+
+       git config --system --list (只 系统配置)
+
+    (优先级依次降低 如果三个配置文件中都有同样的配置优先以本地为准)
+</code></pre><p>==&gt;  git config –[local/global/system] obj.键 + 空格 + 值 //修改、添加配置</p>
+<p>==&gt;  git config –[local/global/system] –unset obj.键  //删除配置</p>
+<p>==================git分区</p>
+<p>==&gt; 工作区 (.git 所在的工作目录)</p>
+<p>==&gt; 暂存区</p>
+<p>==&gt; 仓库 （.git 这个目录就是仓库）</p>
+<p>==&gt; git status 查看文件状态</p>
+<pre><code>刚新建的文件/修改 --&gt; 未跟踪的文件（红色不会被提交）
+
+git add 文件名/夹  --&gt; 成为跟踪文件 (绿色)
+git rm --cached 文件名 --&gt; 取消跟踪状态
+
+git commit -m &quot;提交说明&quot; || 
+
+git commit 回车(进入编辑器) --&gt; i(进入编辑模式) --&gt; esc (退出编辑模式) --&gt; :wq(保存并退出)
+
+链接 : git remote add origin  http.. || ssh
+
+推送 : git push -u origin master(分支)  (第二次就直接push就行了)
+</code></pre><p>==&gt; git pull 拉取远程仓库内容到本地(更新)</p>
+<p>==&gt; git branch 分支名 //新建分支</p>
+<pre><code>git branch 分支名 &apos;commit id&apos; //基于某一次提交的分支
+
+git branch  //查看分支 前面有 * 的就是当前指向的分支(head指向的分支)
+
+git branch -a //显示隐藏分支
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">如果你现快速的代上面的分支，你可以直接切换到那个分支：</div><div class="line"></div><div class="line">$ git checkout origin/experimental</div><div class="line"></div><div class="line">但是，如果你想在那个分支工作的话，你就需要创建一个本地分支：</div><div class="line"></div><div class="line">$ git checkout -b experimental origin/experimental</div><div class="line"></div><div class="line">现在，如果你看看你的本地分支，你会看到：</div><div class="line"></div><div class="line">$ git branch</div><div class="line">  master</div><div class="line">* experimental</div><div class="line"></div><div class="line">你还可以用git remote命令跟踪多个远程分支</div><div class="line"></div><div class="line">$ git remote add win32 git://gutup.com/users/joe/myproject-linux-port</div><div class="line">$ git branch -a</div><div class="line">* master</div><div class="line">  origin/HEAD</div><div class="line">  origin/master</div><div class="line">  origin/v1.0-stable</div><div class="line">  origin/experimental</div><div class="line">  linux/master</div><div class="line">  linux/new-widgets</div></pre></td></tr></table></figure>
+
+git branch -d 分支名 //删除分支
+           -D 强制删除没有合并的分支
+
+git checkout 分支名 //切换到该分支(会检出该分支最后一次提交的代码到工作区)
+
+git checkout -b 分支名 // -b表示创建并切换
+
+git branch -v  查看本地与远程分支的同步信息 -vv 更详细的信息
+
+拉取远程分支到本地: git checkout --track(跟踪关系) &quot;主机名(origin)/分支名&quot;
+                    如果远程直接新建的要先 git remote update 一下
+
+合并分支: git merge 分支名 //在某个分支上将指定分支拉取过来
+          如果有冲突，会自动建立一个临时分支 &lt;&lt;&lt;&lt;Head ... ==== ---- &gt;&gt;&gt;&gt;testing  改好提交就行行了
+
+git clone -b 分支名 仓库地址 //克隆仓库中指定分支内容
+git push --set-upstream origin 分支名  //提交到指定分支(当前所在的分支)
+
+重置暂存区: git reset 文件名/HEAD(所有)  (仅仅重置暂存区,返回add操作之前)
+
+            git reset --hard  //重置掉当前工作目录回到上一次提交danq
+
+            git reset --hard HEAD^ 回到上两次提交 以此类推
+
+            git reset --hard &quot;commit id&quot; 回到指定提交
+
+git reflog //记录每一次提交操作，包括重置掉的id
+</code></pre><p>==&gt; git clone http.. || ssh  克隆远程仓库</p>
+<p>==&gt; git checkout 检出文件(当一个文件改错了 想从历史中拿一个版本来替换是做的)</p>
+<pre><code>git checkout  通过commit id 指定哪个版本(没指定的话就用最近一次提交的版本) 文件名
+</code></pre><p>==&gt; git status //贮藏工作区(保存当前修改又不想提交的文件 之后)</p>
+<pre><code>git status show 查看贮藏内容
+
+git status pop 取出贮藏内容
+</code></pre><p>==&gt; 忽略文件 （成功之后查看状态时就不会显示它了）</p>
+<pre><code>1、工作区根目录下 创建文件 .gitignore 文件
+
+2、规定忽略规则(在文件里写入文件/文件夹名就好 可以是路径（更多...）)
+
+3、该文件可存在于个个目录
+</code></pre><p>==&gt; git log 查看日志</p>
+<p>   1、commit id  重要</p>
+<p>==================远程仓库</p>
+<p>==&gt; github</p>
+<p>==&gt; 开源中国</p>
+<pre><code>本地仓库与远程仓库名必须相同 
+</code></pre><p>==&gt; 生产本机的ssh  </p>
+<pre><code>1、git下输入  ssh-keygen  连续回车生成公私钥（公私钥与本台计算机有关）
+
+2、公私钥匙用户家目录下的 .ssh 文件夹中
+
+   私钥 : id_rsa 
+
+   公钥 : id_rsa.pub
+
+3、复制公钥的内容到远程仓库(GitHub 或 开源中国等）
+
+   添加成功后本台计算机就能和远程仓库进行交换了
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/09/hexp-GitHub搭建博客/" itemprop="url">
+                  hexp+GitHub搭建博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-09T22:47:32+08:00" content="2016-12-09">
+              2016-12-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/09/hexp-GitHub搭建博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/hexp-GitHub搭建博客/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1、基本介绍"><a href="#1、基本介绍" class="headerlink" title="1、基本介绍"></a>1、基本介绍</h3><hr>
+<p> ==&gt; 首先安装node与git</p>
+<p> ==&gt; 进入hexo.io 按照给的提升全局安装hexo、创建hexo项目、npm install 等</p>
+<ul>
+<li>npm install hexo-cli -g</li>
+<li>hexo init blog</li>
+<li>cd blog</li>
+<li>npm install</li>
+<li>hexo server</li>
+</ul>
+<p>==&gt; 进入 <code>_config.yml</code> 文件设置一下博客配置 如 <strong>title</strong> 等</p>
+<pre><code>配置完成之后需要 $ hexo generate 一下重新生成文件
+</code></pre><p>==&gt; <code>\scaffolds\</code> 下得文件表示不同的网页 文章是基于页面新建的</p>
+<p>==&gt; <code>\source\_postsm</code> 下存放的是写的文章</p>
+<pre><code>写文章可通过 hexo new &quot;文章名&quot; || 直接新建md文件  
+hexo new 的文章默认以 `\scaffolds\post.md` 文件为模板
+hexo new page &quot;页面名&quot;  新建一个页面里面有一个默认的index.md 文件
+设置 post_asset_folder: TRUE 之后新建时同时生产相应的资源文件夹(直接访问)
+</code></pre><p>==&gt; <code>public</code> 本地部署所在文件夹</p>
+<p>==&gt; 部署时会将项目中 <code>\source\img\*</code> 的图片部署到使用环境的img文件夹中</p>
+<h3 id="2、主题切换"><a href="#2、主题切换" class="headerlink" title="2、主题切换"></a>2、主题切换</h3><hr>
+<p>==&gt; 主题晚上随意下载、存放在 目录\themes 下就可以使用<br>==&gt; 主题切换: 将_config.yml 下 theme 得值设为需要展示的主题就好了<br>==&gt; 主题中也有 _config.yml 文件配置针对于该主题的一些信息</p>
+<h3 id="3、部署到git上"><a href="#3、部署到git上" class="headerlink" title="3、部署到git上"></a>3、部署到git上</h3><p>==&gt; 首先安装hexo-deployer-git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<p>==&gt; 其次修改配置(_config.yml 的最后)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;  仓库地址 ssh : http:// </div><div class="line">  branch: [branch]  分支名 如: master</div><div class="line">  message: [message]  消息随便写</div></pre></td></tr></table></figure>
+<p>==&gt; 一件部署之后就能直接访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate --deploy</div></pre></td></tr></table></figure></p>
+<h3 id="4、优化"><a href="#4、优化" class="headerlink" title="4、优化"></a>4、优化</h3><pre><code>1、进入百度站长平台或Google站长平台(https://www.google.com/webmasters/tools) 进行验证
+
+2、两者都可以通过文件验证
+
+   ---&gt; 过程是下载他们的的验证文件，放到根目录下(hexo是\source\目录)
+
+   ---&gt; 在上方添加 layout: false  换行  --- ,目的是禁止hexo对该文件进行编译
+
+   ---&gt; hexo generate --deploy 重新生成一下
+
+   ---&gt; 按照后方的提示就能够通过验证了
+
+3、网站地图 sitemap.xml and baidusitemap.xml
+
+   ---&gt; npm install hexo-generator-sitemap --save
+        npm install hexo-generator-baidu-sitemap --save  
+
+   ---&gt; 安装完成之后在_config.yml 最后添加以下代码，生成map文件
+
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># sitemap </div><div class="line">sitemap:</div><div class="line">  path: sitemap.xml</div><div class="line">baidusitemap:</div><div class="line">  path: baidusitemap.xml</div></pre></td></tr></table></figure>
+
+   ---&gt; 然后在谷歌的`抓取 -&gt; 站点地图` 或百度的 `提交连接 -&gt; 自动提交 -&gt; sitemap` 下按提示添加就好了
+
+   ---&gt; 但是百度很坑，提交的时候自动在我前面加上了**http://** 然后提示格式不正确抓取不成功
+</code></pre>
           
         
       
@@ -1617,7 +1585,7 @@ function ajax(json){
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 
@@ -1658,7 +1626,7 @@ function ajax(json){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
