@@ -264,6 +264,208 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/30/mongoDB/" itemprop="url">
+                  mongoDB
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-30T21:57:26+08:00" content="2016-12-30">
+              2016-12-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/30/mongoDB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/mongoDB/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>(1) 基本使用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//安装好之后,从bin目录中找到mongod.exe 和 mongo.exe</span></div><div class="line"><span class="comment">//mongod 启动后台数据库，mongo 启动前台连接数据库(要在C盘创建一个 data/db目录)</span></div><div class="line"></div><div class="line"><span class="comment">//启动mongo</span></div><div class="line">show dbs <span class="comment">//查看所有数据库</span></div><div class="line">         <span class="comment">//新创建的数据库不在数据列表中，要插入一下数据才能显示</span></div><div class="line"></div><div class="line">db <span class="comment">//显示当前数据库  </span></div><div class="line"><span class="comment">//mongodb 分  数据库(database) =&gt; 集合() =&gt;文档对象</span></div><div class="line"><span class="comment">//mysql   分  数据库 =&gt; 表 =&gt; 记录 </span></div><div class="line"></div><div class="line">use DATABASE_NAME <span class="comment">//打开或创建数据库</span></div><div class="line"></div><div class="line">db.createCollection(<span class="string">"集合名"</span>) <span class="comment">//手动在当前数据库下创建一个集合</span></div><div class="line">show collection <span class="comment">//显示当前数据库下得集合</span></div><div class="line"></div><div class="line">db.集合名.insert(&#123;<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"name"</span>:<span class="string">"liaozhongxun"</span>,<span class="string">"age"</span>:<span class="string">"20"</span>&#125;) </div><div class="line"><span class="comment">//往当前数据库的这个集合中插入一个文档对象(如果没有这个集合就默认创建一个)</span></div><div class="line"></div><div class="line">db.dropDatabase()  <span class="comment">//删除当前数据库</span></div><div class="line">db.集合名.drop() <span class="comment">//删除当前数据库下得某个集合</span></div><div class="line"></div><div class="line"><span class="comment">//=======================文档操作</span></div><div class="line"><span class="comment">//通过insert给集合插入文档</span></div><div class="line"><span class="comment">//db.集合名.save 也能新增文档</span></div><div class="line"><span class="comment">//给集合添加文档时 _id(主键)重复 insert方式会报错,save方式会更新</span></div><div class="line"></div><div class="line">db.集合名.find() <span class="comment">//显示当前表的所有记录(没有设置id的对象会自动添加一个)</span></div><div class="line">db.集合名.find().prettye <span class="comment">//格式化查找到的记录 find中都能带条件</span></div><div class="line">db.集合名.find().count() <span class="comment">//记录个数</span></div><div class="line">db.集合名.find().limit(<span class="number">3</span>) <span class="comment">//只要3条</span></div><div class="line">db.集合名.find().skip(<span class="number">3</span>) <span class="comment">//跳过第3条</span></div><div class="line">db.集合名.findOne() <span class="comment">//显示符合要求的第一个对象</span></div><div class="line"></div><div class="line">db.集合名.updata(&#123;<span class="string">"条件字段名"</span>,<span class="string">"条件字段值"</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="string">"要修改的字段名"</span>:<span class="string">"修改后的字段值"</span>&#125;&#125;)  <span class="comment">//收到更新指定字段</span></div><div class="line"></div><div class="line">db.集合名.remove(&#123;<span class="string">"条件字段名"</span>,<span class="string">"条件字段值"</span>&#125;) <span class="comment">//删除指定文档</span></div><div class="line">db.集合名.remove() <span class="comment">//删除所有文档</span></div><div class="line"></div><div class="line"><span class="comment">//======================条件</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;  得到age &gt; 5 的所有记录</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;.sort("age":1)  得到的记录中 按age升序</span></div><div class="line"><span class="comment">//&#123;"age":&#123;$gt:5&#125;&#125;.sort("age":-1)  得到的记录中 按age降序</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//=======================与nodejs连接</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/26/Express/" itemprop="url">
+                  Express
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-26T20:36:35+08:00" content="2016-12-26">
+              2016-12-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/26/Express/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/Express/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>(1)安装<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ npm install -g express-generator@<span class="number">4</span>  </div><div class="line"></div><div class="line"><span class="comment">//创建express工程</span></div><div class="line">$ express /tmp/foo &amp;&amp; cd /tmp/foo </div><div class="line"><span class="comment">//创建不同的express工程,ejs模式比较简单</span></div><div class="line">$ express ejs expreEjs &amp;&amp; cd /expreEjs</div><div class="line"></div><div class="line">$ npm install</div><div class="line"></div><div class="line">$ npm start</div><div class="line"></div><div class="line"><span class="comment">//访问 http://localhost:3000/</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/24/nodejs/" itemprop="url">
                   nodejs
                 </a>
@@ -481,9 +683,9 @@ EventEmitter.removeAllListeners([event]) 移除所有事件的所有监听器，
 <h4 id="Weakset"><a href="#Weakset" class="headerlink" title="Weakset"></a>Weakset</h4><h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([[]]) <span class="comment">//参数解构 [[key,value],[key,value]]  不会出现从复的key</span></div><div class="line">map.size  <span class="comment">//成员数量</span></div><div class="line">map.set(<span class="string">"key"</span>,<span class="string">"value"</span>) <span class="comment">//新增值</span></div><div class="line">map.get(<span class="string">"key"</span>) <span class="comment">//获取</span></div><div class="line">map.has(<span class="string">"key"</span>) <span class="comment">//判断key是否存在</span></div><div class="line">map.delete(<span class="string">"key"</span>) <span class="comment">//删除key</span></div><div class="line">map.clear() <span class="comment">//清空所有</span></div><div class="line"></div><div class="line">map.keys()...map.values()...map.entries() <span class="comment">//map提供的遍历接口</span></div><div class="line">map.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">val,key</span>)</span>&#123;&#125;)</div></pre></td></tr></table></figure>
 <h4 id="Weakmap"><a href="#Weakmap" class="headerlink" title="Weakmap"></a>Weakmap</h4><h4 id="遍历接口-lterator-和-Symbol"><a href="#遍历接口-lterator-和-Symbol" class="headerlink" title="遍历接口 lterator 和 Symbol"></a>遍历接口 lterator 和 Symbol</h4><p>Symbol : ES6引入的新的原始数据类型,通过Symbol可以生成一个独一无二的ID<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="built_in">Symbol</span>() <span class="comment">//不能使用new, typeof s为symbol</span></div><div class="line"><span class="keyword">var</span> s = <span class="built_in">Symbol</span>(<span class="string">"s1"</span>) <span class="comment">//可以传入值进行标识,即使传入相同的值也不会返回相等ID</span></div></pre></td></tr></table></figure></p>
 <p>部署遍历接口<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.prototype[<span class="built_in">Symbol</span>.iterabor] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(<span class="keyword">this</span>) <span class="comment">//this代表当前调用变量接口的对象</span></div><div class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">    <span class="keyword">var</span> index = <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        next()&#123;</div><div class="line">            <span class="keyword">return</span> index &lt; keys.length ? &#123; <span class="attr">value</span>:<span class="number">1</span>,<span class="attr">done</span>:<span class="literal">false</span>&#125; : &#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;</div><div class="line">            <span class="comment">//value 当前遍历的值,done 当前遍历是否结束</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">helloWorldGenerator</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="string">'hello'</span>;  </div><div class="line">  <span class="keyword">yield</span> <span class="string">'world'</span>;</div><div class="line">  <span class="keyword">return</span> <span class="string">'ending'</span>; <span class="comment">//return代表函数结束了</span></div><div class="line">  <span class="comment">//每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield语句（或return语句）为止。换言之，Generator函数是分段执行的，yield语句是暂停执行的标记，而next方法可以恢复执行。</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> hw = helloWorldGenerator();</div><div class="line"></div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: 'hello', done: false &#125;</span></div><div class="line"></div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: 'world', done: false &#125;</span></div><div class="line"><span class="comment">// next 传的参数通过上一次yield 的返回结果得到</span></div><div class="line"></div><div class="line">hw.next() <span class="comment">//遇到return时 done为true</span></div><div class="line"><span class="comment">// &#123; value: 'ending', done: true &#125;</span></div><div class="line"></div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: undefined, done: true &#125;</span></div></pre></td></tr></table></figure>
+<h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">helloWorldGenerator</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="string">'hello'</span>;  </div><div class="line">  <span class="keyword">yield</span> <span class="string">'world'</span>;</div><div class="line">  <span class="keyword">return</span> <span class="string">'ending'</span>; <span class="comment">//return代表函数结束了</span></div><div class="line">  <span class="comment">//每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield语句（或return语句）为止。换言之，Generator函数是分段执行的，yield语句是暂停执行的标记，而next方法可以恢复执行。</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> hw = helloWorldGenerator(); <span class="comment">//确保同一个对象</span></div><div class="line"></div><div class="line">hw.next() </div><div class="line"><span class="comment">// &#123; value: 'hello', done: false &#125;</span></div><div class="line"></div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: 'world', done: false &#125;</span></div><div class="line"><span class="comment">// next 传的参数通过上一次yield 的返回结果得到</span></div><div class="line"></div><div class="line">hw.next() <span class="comment">//遇到return时 done为true</span></div><div class="line"><span class="comment">// &#123; value: 'ending', done: true &#125;</span></div><div class="line"></div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: undefined, done: true &#125;</span></div></pre></td></tr></table></figure>
 <h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pro = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">       <span class="comment">//经过很多操作之后</span></div><div class="line">       <span class="comment">//resolve() 代表成功状态,reject() 代表失败</span></div><div class="line">       resolve();</div><div class="line">&#125;)</div><div class="line">pro.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"成功"</span>)</div><div class="line">   <span class="comment">//当上面执行 resolve() 的时候走这里</span></div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"失败"</span>)</div><div class="line">   <span class="comment">//当上面执行 reject() 的时候走这里</span></div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="comment">//报错时走这里</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line"><span class="keyword">var</span> pro3 = Promist.all([pro1,pro2]);</div><div class="line">pro3.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="comment">//pro1 和 pro2 都成功(调用resolve())之后 </span></div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="comment">//pro1 和 pro2 只要有一个失败(调用reject())就马上走这里</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line"><span class="keyword">var</span> pro3 = Promist.race([pro1,pro2]);</div><div class="line">pro3.then() </div><div class="line"></div><div class="line"><span class="comment">//race函数的参数中 只要有一个的状态(变成调用resolve()) 改变,就走成功</span></div><div class="line"><span class="comment">//race函数的参数中 只要有一个的状态(变成调用reject()) 改变,就走失败</span></div></pre></td></tr></table></figure>
-<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//====es6</span></div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name)&#123; <span class="comment">//这个类的构造函数</span></div><div class="line">        <span class="keyword">this</span>.name = name; </div><div class="line">    &#125;</div><div class="line">    getName()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 2 继承</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat2</span> <span class="keyword">extends</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name,color)&#123; </div><div class="line">        <span class="keyword">super</span>(name) </div><div class="line">        <span class="comment">//在 constructor 内,super指代父类的contructor,</span></div><div class="line">        <span class="comment">//在 其他方法内,super指定父类的同名方法</span></div><div class="line">        <span class="keyword">this</span>.color = color; </div><div class="line">    &#125;</div><div class="line">&#125;<span class="comment">//已经继承了 并且有自己的color属性</span></div><div class="line"></div><div class="line"><span class="comment">//====es6结束</span></div><div class="line"><span class="comment">//===========================</span></div><div class="line"><span class="comment">//====原生</span></div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">   <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Cat.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="keyword">this</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//====原生结束</span></div></pre></td></tr></table></figure>
+<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//====es6</span></div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name)&#123; <span class="comment">//这个类的构造函数</span></div><div class="line">        <span class="keyword">this</span>.name = name; </div><div class="line">    &#125;</div><div class="line">    getName()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> getColor(color)&#123; <span class="comment">//静态方法 直接Cat.getColor()调用</span></div><div class="line">        <span class="built_in">console</span>.log(color)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 2 继承</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat2</span> <span class="keyword">extends</span> <span class="title">Cat</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name,color)&#123; </div><div class="line">        <span class="keyword">super</span>(name) </div><div class="line">        <span class="comment">//在 constructor 内,super指代父类的contructor,</span></div><div class="line">        <span class="comment">//在 其他方法内,super指定父类的同名方法</span></div><div class="line">        <span class="keyword">this</span>.color = color; </div><div class="line">    &#125;</div><div class="line">    getfafn()&#123;</div><div class="line">        <span class="keyword">super</span>.getName()</div><div class="line">    &#125;</div><div class="line">&#125;<span class="comment">//已经继承了 并且有自己的color属性</span></div><div class="line"></div><div class="line"><span class="comment">//====es6结束</span></div><div class="line"><span class="comment">//===========================</span></div><div class="line"><span class="comment">//====原生</span></div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">   <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Cat.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="keyword">this</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//====原生结束</span></div></pre></td></tr></table></figure>
 <h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h3><pre><code class="javascript">
 </code></pre>
 
@@ -586,7 +788,7 @@ EventEmitter.removeAllListeners([event]) 移除所有事件的所有监听器，
       
         
           
-            <h4 id="nodejs-调试插件"><a href="#nodejs-调试插件" class="headerlink" title="nodejs 调试插件"></a>nodejs 调试插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install supervisor -g</div><div class="line"></div><div class="line">//node server.js 每次更改server服务内容时 需要重启服务才行</div><div class="line">//supervisor server.js 每次更改server服务内容时 不要重启直接刷新就行</div></pre></td></tr></table></figure>
+            <h3 id="普通插件"><a href="#普通插件" class="headerlink" title="普通插件"></a>普通插件</h3><h4 id="nodejs-调试插件"><a href="#nodejs-调试插件" class="headerlink" title="nodejs 调试插件"></a>nodejs 调试插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install supervisor -g</div><div class="line"></div><div class="line">//node server.js 每次更改server服务内容时 需要重启服务才行</div><div class="line">//supervisor server.js 每次更改server服务内容时 不要重启直接刷新就行</div></pre></td></tr></table></figure>
 <h4 id="更新-package-json-的依赖"><a href="#更新-package-json-的依赖" class="headerlink" title="更新 package.json 的依赖"></a>更新 package.json 的依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g npm-check-updates  </div><div class="line">  </div><div class="line">//ncu 检查版本</div><div class="line">//ncu -u 更新需要更新的版本</div><div class="line">//ncu -a 更新所有版本</div></pre></td></tr></table></figure>
 <hr>
 <h4 id="表格行列拖拽"><a href="#表格行列拖拽" class="headerlink" title="表格行列拖拽"></a>表格行列拖拽</h4><hr>
@@ -594,6 +796,7 @@ EventEmitter.removeAllListeners([event]) 移除所有事件的所有监听器，
 <h4 id="删除插件-删除node-node-modules"><a href="#删除插件-删除node-node-modules" class="headerlink" title="删除插件(删除node_node_modules)"></a>删除插件(删除node_node_modules)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g rimraf </div><div class="line">cd xxx  </div><div class="line">rimraf node_modules</div></pre></td></tr></table></figure>
 <h4 id="移动端真机调试"><a href="#移动端真机调试" class="headerlink" title="移动端真机调试"></a>移动端真机调试</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install spy-<span class="keyword">debugger</span> -g</div></pre></td></tr></table></figure>
 <h4 id="MySQL模块-node项目下安装之后，该node项目就能连接MySQL了"><a href="#MySQL模块-node项目下安装之后，该node项目就能连接MySQL了" class="headerlink" title="MySQL模块(node项目下安装之后，该node项目就能连接MySQL了)"></a>MySQL模块(node项目下安装之后，该node项目就能连接MySQL了)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mysql</div></pre></td></tr></table></figure>
+<h3 id="外网映射工具"><a href="#外网映射工具" class="headerlink" title="外网映射工具"></a>外网映射工具</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、ngrok</div><div class="line"><span class="number">2</span>、localtunnel npm模块</div><div class="line">   lt --port <span class="number">8088</span>  <span class="comment">//端口号是本机要映射到外网的服务端口</span></div><div class="line"></div><div class="line"><span class="number">3</span>、pagekite 花生壳等</div></pre></td></tr></table></figure>
 
           
         
@@ -1572,162 +1775,11 @@ git status pop 取出贮藏内容
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/09/hexp-GitHub搭建博客/" itemprop="url">
-                  hexp+GitHub搭建博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-09T22:47:32+08:00" content="2016-12-09">
-              2016-12-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/09/hexp-GitHub搭建博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/hexp-GitHub搭建博客/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1、基本介绍"><a href="#1、基本介绍" class="headerlink" title="1、基本介绍"></a>1、基本介绍</h3><hr>
-<p> ==&gt; 首先安装node与git</p>
-<p> ==&gt; 进入hexo.io 按照给的提升全局安装hexo、创建hexo项目、npm install 等</p>
-<ul>
-<li>npm install hexo-cli -g</li>
-<li>hexo init blog</li>
-<li>cd blog</li>
-<li>npm install</li>
-<li>hexo server</li>
-</ul>
-<p>==&gt; 进入 <code>_config.yml</code> 文件设置一下博客配置 如 <strong>title</strong> 等</p>
-<pre><code>配置完成之后需要 $ hexo generate 一下重新生成文件
-</code></pre><p>==&gt; <code>\scaffolds\</code> 下得文件表示不同的网页 文章是基于页面新建的</p>
-<p>==&gt; <code>\source\_postsm</code> 下存放的是写的文章</p>
-<pre><code>写文章可通过 hexo new &quot;文章名&quot; || 直接新建md文件  
-hexo new 的文章默认以 `\scaffolds\post.md` 文件为模板
-hexo new page &quot;页面名&quot;  新建一个页面里面有一个默认的index.md 文件
-设置 post_asset_folder: TRUE 之后新建时同时生产相应的资源文件夹(直接访问)
-</code></pre><p>==&gt; <code>public</code> 本地部署所在文件夹</p>
-<p>==&gt; 部署时会将项目中 <code>\source\img\*</code> 的图片部署到使用环境的img文件夹中</p>
-<h3 id="2、主题切换"><a href="#2、主题切换" class="headerlink" title="2、主题切换"></a>2、主题切换</h3><hr>
-<p>==&gt; 主题晚上随意下载、存放在 目录\themes 下就可以使用<br>==&gt; 主题切换: 将_config.yml 下 theme 得值设为需要展示的主题就好了<br>==&gt; 主题中也有 _config.yml 文件配置针对于该主题的一些信息</p>
-<h3 id="3、部署到git上"><a href="#3、部署到git上" class="headerlink" title="3、部署到git上"></a>3、部署到git上</h3><p>==&gt; 首先安装hexo-deployer-git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-<p>==&gt; 其次修改配置(_config.yml 的最后)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;  仓库地址 ssh : http:// </div><div class="line">  branch: [branch]  分支名 如: master</div><div class="line">  message: [message]  消息随便写</div></pre></td></tr></table></figure>
-<p>==&gt; 一件部署之后就能直接访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate --deploy</div></pre></td></tr></table></figure></p>
-<h3 id="4、优化"><a href="#4、优化" class="headerlink" title="4、优化"></a>4、优化</h3><pre><code>1、进入百度站长平台或Google站长平台(https://www.google.com/webmasters/tools) 进行验证
-
-2、两者都可以通过文件验证
-
-   ---&gt; 过程是下载他们的的验证文件，放到根目录下(hexo是\source\目录)
-
-   ---&gt; 在上方添加 layout: false  换行  --- ,目的是禁止hexo对该文件进行编译
-
-   ---&gt; hexo generate --deploy 重新生成一下
-
-   ---&gt; 按照后方的提示就能够通过验证了
-
-3、网站地图 sitemap.xml and baidusitemap.xml
-
-   ---&gt; npm install hexo-generator-sitemap --save
-        npm install hexo-generator-baidu-sitemap --save  
-
-   ---&gt; 安装完成之后在_config.yml 最后添加以下代码，生成map文件
-
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># sitemap </div><div class="line">sitemap:</div><div class="line">  path: sitemap.xml</div><div class="line">baidusitemap:</div><div class="line">  path: baidusitemap.xml</div></pre></td></tr></table></figure>
-
-   ---&gt; 然后在谷歌的`抓取 -&gt; 站点地图` 或百度的 `提交连接 -&gt; 自动提交 -&gt; sitemap` 下按提示添加就好了
-
-   ---&gt; 但是百度很坑，提交的时候自动在我前面加上了**http://** 然后提示格式不正确抓取不成功
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1768,7 +1820,7 @@ hexo new page &quot;页面名&quot;  新建一个页面里面有一个默认的i
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
