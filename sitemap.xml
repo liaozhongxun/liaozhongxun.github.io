@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liaozhongxun.github.io/2017/08/15/webpack/</loc>
+    
+    <lastmod>2017-08-19T11:18:13.555Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liaozhongxun.github.io/2017/08/10/%E5%A4%A7%E6%80%BB%E7%BB%93/</loc>
     
-    <lastmod>2017-08-17T00:26:01.995Z</lastmod>
+    <lastmod>2017-08-19T09:34:20.511Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liaozhongxun.github.io/2017/08/10/%E6%BD%AD%E5%B7%9E%E8%AF%BE%E7%A8%8B/</loc>
+    
+    <lastmod>2017-08-18T22:51:39.822Z</lastmod>
     
   </url>
   
@@ -23,23 +37,9 @@
   </url>
   
   <url>
-    <loc>https://liaozhongxun.github.io/2017/08/15/webpack/</loc>
-    
-    <lastmod>2017-08-15T06:39:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://liaozhongxun.github.io/2017/01/09/mySQL/</loc>
     
     <lastmod>2017-08-13T06:13:58.603Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liaozhongxun.github.io/2017/08/10/%E6%BD%AD%E5%B7%9E%E8%AF%BE%E7%A8%8B/</loc>
-    
-    <lastmod>2017-08-13T03:21:39.821Z</lastmod>
     
   </url>
   
